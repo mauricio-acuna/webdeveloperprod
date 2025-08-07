@@ -4,6 +4,8 @@ description: "Aprende a desplegar sitios web desde principiante hasta nivel empr
 baseurl: "/webdeveloperprod"
 url: "https://mauricio-acuna.github.io"
 
+# GitHub Pages configurado correctamente
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
