@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publica tu Web en Producción – Guía Definitiva para Webmasters Junior</title>
+    <meta name="description" content="Guía paso a paso para publicar webs estáticas en producción, perfecta para desarrolladores junior y webmasters principiantes">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">📚 Publica tu Web</a>
+            <ul class="nav-links">
+                <li><a href="paso1.html">Paso 1</a></li>
+                <li><a href="paso2.html">Paso 2</a></li>
+                <li><a href="paso3.html">Paso 3</a></li>
+                <li><a href="paso4.html">Paso 4</a></li>
+                <li><a href="paso5.html">Paso 5</a></li>
+                <li><a href="premium.html">Premium</a></li>
+                <li><a href="glosario.html">Glosario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Publica tu Web en Producción</h1>
+                <p>Guía definitiva para webmasters junior: aprende a publicar tu web estática de forma segura, pública y económica.</p>
+                <div class="alert alert-info">
+                    <strong>🎯 Objetivo:</strong> Al finalizar esta guía, tendrás tu sitio web funcionando en producción con HTTPS y dominio personalizado.
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <!-- Generado automáticamente por script.js -->
+                </aside>
+
+                <div class="main-content">
+                    <section id="introduccion" class="content">
+                        <h2>¿Por qué esta guía?</h2>
+                        <p>En 2025, publicar una web va más allá de simplemente subir archivos a un servidor. Aquí te explicamos por qué:</p>
+
+                        <div class="alert alert-info">
+                            <strong>📊 Estadísticas clave:</strong>
+                            <ul>
+                                <li>47% de los usuarios abandonan un sitio que tarda más de 2 segundos en cargar</li>
+                                <li>El 95% del tráfico web está protegido por HTTPS</li>
+                                <li>Google penaliza sitios sin SSL en sus rankings</li>
+                            </ul>
+                        </div>
+
+                        <h3>Ecosistema Actual del Deployment Web</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Aspecto</th>
+                                        <th>Antes (2020)</th>
+                                        <th>Ahora (2025)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Hosting</td>
+                                        <td>FTP manual a servidor compartido</td>
+                                        <td>Git-based deployment, Edge networks</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SSL/HTTPS</td>
+                                        <td>Certificados pagados</td>
+                                        <td>Let's Encrypt automático</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Performance</td>
+                                        <td>Optimización básica</td>
+                                        <td>Core Web Vitals, Edge Computing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CI/CD</td>
+                                        <td>Deploy manual</td>
+                                        <td>Automatización, Testing, Preview</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Ejemplo Práctico: Ciclo de Vida de un Despliegue Moderno</h3>
+                        
+                        <div class="code-block">
+                            <pre><code># 1. Desarrollo local
+npm create vite@latest my-website
+cd my-website
+npm install
+
+# 2. Control de versiones
+git init
+git add .
+git commit -m "Initial commit"
+
+# 3. Conexión con repositorio remoto
+git remote add origin https://github.com/username/my-website.git
+git push -u origin main
+
+# 4. Despliegue automático (ejemplo GitHub Actions)
+name: Deploy
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: |
+          npm install
+          npm run build</code></pre>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Consejo profesional:</strong> 
+                            <p>Un error común es centrarse solo en el código y olvidar la infraestructura. En 2025, un desarrollador web debe dominar:</p>
+                            <ul>
+                                <li>Git y flujos de trabajo colaborativos</li>
+                                <li>CI/CD y automatización</li>
+                                <li>Monitorización y análisis de rendimiento</li>
+                                <li>Seguridad web básica</li>
+                            </ul>
+                        </div>
+
+                        <h3>Comparativa de Soluciones de Deployment</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Plataforma</th>
+                                        <th>Mejor para</th>
+                                        <th>Límite Gratuito</th>
+                                        <th>Características Destacadas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>GitHub Pages</td>
+                                        <td>Proyectos personales, documentación</td>
+                                        <td>Ilimitado para repos públicos</td>
+                                        <td>Integración GitHub Actions, Jekyll</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Netlify</td>
+                                        <td>JAMstack, SPAs</td>
+                                        <td>100GB/mes bandwidth</td>
+                                        <td>Forms, Functions, Split Testing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Vercel</td>
+                                        <td>Next.js, React apps</td>
+                                        <td>100GB/mes</td>
+                                        <td>Edge Functions, Analytics</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section id="stack-tecnologico-moderno" class="content">
+                        <h2>Stack Tecnológico Moderno 2025</h2>
+                        
+                        <div class="alert alert-warning">
+                            <strong>⚡ Evolución acelerada:</strong> El ecosistema de desarrollo web cambia cada 6 meses. Esta sección se actualiza trimestralmente con las últimas tendencias validadas por la industria.
+                        </div>
+
+                        <h3>Arquitectura JAMstack Evolution</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Categoría</th>
+                                        <th>Tecnología Líder</th>
+                                        <th>Casos de Uso</th>
+                                        <th>Adoptado por</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Static Site Generators</td>
+                                        <td>Astro, Next.js 14, Nuxt 3</td>
+                                        <td>Sites complejos, e-commerce</td>
+                                        <td>Netflix, Spotify, Shopify</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Edge Computing</td>
+                                        <td>Cloudflare Workers, Vercel Edge</td>
+                                        <td>Personalización, A/B testing</td>
+                                        <td>Discord, Notion, Linear</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Headless CMS</td>
+                                        <td>Sanity, Strapi, Contentful</td>
+                                        <td>Content management escalable</td>
+                                        <td>Tesla, Figma, Puma</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Build Tools</td>
+                                        <td>Vite, Turbopack, esbuild</td>
+                                        <td>Development velocity</td>
+                                        <td>Toda la industria tech</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Ejemplo: Setup Enterprise con Astro</h3>
+                        <div class="code-block">
+                            <pre><code># Proyecto enterprise-grade con Astro
+npm create astro@latest enterprise-website -- --template=minimal --typescript
+
+# Estructura optimizada
+src/
+├── components/
+│   ├── ui/           # Design system components
+│   ├── layout/       # Layout components  
+│   └── features/     # Feature-specific components
+├── content/          # Content collections
+├── layouts/          # Page layouts
+├── pages/           # File-based routing
+├── styles/          # Global styles + design tokens
+└── utils/           # Shared utilities
+
+# astro.config.mjs - Configuración avanzada
+export default defineConfig({
+  output: 'static',
+  image: {
+    domains: ['images.unsplash.com', 'cdn.sanity.io'],
+    formats: ['avif', 'webp', 'jpg']
+  },
+  integrations: [
+    tailwind({
+      applyBaseStyles: false
+    }),
+    sitemap(),
+    partytown({
+      config: {
+        forward: ['gtag', 'dataLayer.push']
+      }
+    }),
+    compress({
+      CSS: true,
+      HTML: true,
+      Image: false, // Handled by Astro's image service
+      JavaScript: true,
+      SVG: true
+    })
+  ],
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'react-vendor': ['react', 'react-dom'],
+            'utils': ['date-fns', 'clsx']
+          }
+        }
+      }
+    }
+  }
+})</code></pre>
+                        </div>
+
+                        <h3>Performance Budget y Monitoring</h3>
+                        <div class="code-block">
+                            <pre><code>// lighthouse-budget.json
+{
+  "budget": [
+    {
+      "resourceSizes": [
+        { "resourceType": "total", "budget": 500 },
+        { "resourceType": "document", "budget": 50 },
+        { "resourceType": "script", "budget": 150 },
+        { "resourceType": "stylesheet", "budget": 50 },
+        { "resourceType": "image", "budget": 200 },
+        { "resourceType": "font", "budget": 100 }
+      ],
+      "resourceCounts": [
+        { "resourceType": "total", "budget": 50 },
+        { "resourceType": "script", "budget": 10 },
+        { "resourceType": "stylesheet", "budget": 5 }
+      ],
+      "timings": [
+        { "metric": "first-contentful-paint", "budget": 1000 },
+        { "metric": "largest-contentful-paint", "budget": 2500 },
+        { "metric": "cumulative-layout-shift", "budget": 0.1 },
+        { "metric": "total-blocking-time", "budget": 200 }
+      ]
+    }
+  ]
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="metodologias-desarrollo" class="content">
+                        <h2>Metodologías de Desarrollo Avanzadas</h2>
+
+                        <h3>Git Flow para Equipos Enterprise</h3>
+                        <div class="terminal">
+# Branch strategy profesional
+main              # Production branch - Solo releases
+├── develop       # Integration branch
+├── feature/      # Feature development
+├── release/      # Release preparation  
+├── hotfix/       # Emergency fixes
+└── experimental/ # R&D features
+
+# Ejemplo de flujo completo
+git checkout develop
+git pull origin develop
+git checkout -b feature/advanced-search-ui
+
+# Desarrollo con commits semánticos
+git commit -m "feat(search): implement advanced filter components"
+git commit -m "style(search): add responsive design for mobile"
+git commit -m "test(search): add unit tests for filter logic"
+
+# Code review y merge
+git push origin feature/advanced-search-ui
+# Create PR → Code Review → Automated Tests → Merge</div>
+
+                        <h3>Conventional Commits y Automatización</h3>
+                        <div class="code-block">
+                            <pre><code># .gitmessage template
+# &lt;type&gt;(&lt;scope&gt;): &lt;description&gt;
+#
+# &lt;body&gt;
+#
+# &lt;footer&gt;
+
+# Types:
+# feat:     Nueva funcionalidad
+# fix:      Bug fix
+# docs:     Documentación
+# style:    Formato, semicolons, etc (no code change)
+# refactor: Code refactoring
+# perf:     Performance improvement
+# test:     Tests
+# chore:    Build, tools, etc
+
+# Examples:
+# feat(auth): add OAuth2 integration
+# fix(api): handle null response in user endpoint
+# docs(readme): update installation instructions
+# perf(images): implement lazy loading for gallery</code></pre>
+                        </div>
+
+                        <h3>Automatización con Husky y Lint-staged</h3>
+                        <div class="code-block">
+                            <pre><code># .husky/pre-commit
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint-staged
+npx lint-staged
+
+# Type checking
+npm run type-check
+
+# Run tests affected by staged files
+npm run test:staged
+
+echo "✅ Pre-commit checks passed!"
+
+# .husky/commit-msg  
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Validate commit message format
+npx commitlint --edit $1
+
+# package.json scripts
+{
+  "scripts": {
+    "prepare": "husky install",
+    "lint:fix": "eslint --fix src/**/*.{ts,tsx}",
+    "format": "prettier --write src/**/*.{ts,tsx,css,md}",
+    "type-check": "tsc --noEmit",
+    "test:staged": "vitest related --run",
+    "release": "semantic-release"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "vitest related --run --passWithNoTests"
+    ],
+    "*.{css,md,json}": [
+      "prettier --write"
+    ]
+  }
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section class="content">
+                        <h2>Roadmap Técnico Profesional</h2>
+
+                        <div class="alert alert-info">
+                            <strong>🚀 Progresión sugerida:</strong> Esta es la ruta que siguen los desarrolladores en empresas FAANG y startups unicornio.
+                        </div>
+
+                        <div class="steps-grid">
+                            <article class="step-card">
+                                <h3>📦 Paso 1: Fundamentos Sólidos</h3>
+                                <p><strong>Domina:</strong> HTML semántico, CSS moderno, JavaScript ES2024, TypeScript, Git avanzado</p>
+                                <div class="alert alert-success">
+                                    <strong>✓ Incluye:</strong> Performance optimization, accessibility, SEO técnico
+                                </div>
+                                <div class="text-sm" style="margin-top: 1rem;">
+                                    <strong>Tiempo estimado:</strong> 2-3 meses<br>
+                                    <strong>Proyectos:</strong> Portfolio, landing pages, documentación técnica
+                                </div>
+                                <a href="paso1.html">Comenzar →</a>
+                            </article>
+
+                            <article class="step-card">
+                                <h3>🚀 Paso 2: Deployment Profesional</h3>
+                                <p><strong>Domina:</strong> GitHub Actions, CI/CD, automatización, monitoreo, optimización de builds</p>
+                                <div class="alert alert-info">
+                                    <strong>💡 Enterprise focus:</strong> Pipeline automation, performance monitoring, security scanning
+                                </div>
+                                <div class="text-sm" style="margin-top: 1rem;">
+                                    <strong>Tiempo estimado:</strong> 3-4 semanas<br>
+                                    <strong>Proyectos:</strong> Automated deployment, monitoring dashboard
+                                </div>
+                                <a href="paso2.html">Explorar →</a>
+                            </article>
+
+                            <article class="step-card">
+                                <h3>🌐 Paso 3: Multi-Platform Strategy</h3>
+                                <p><strong>Domina:</strong> Netlify, Vercel, CloudFlare, CDN optimization, edge computing</p>
+                                <div class="alert alert-warning">
+                                    <strong>⚡ Advanced:</strong> Edge functions, A/B testing, personalization
+                                </div>
+                                <div class="text-sm" style="margin-top: 1rem;">
+                                    <strong>Tiempo estimado:</strong> 2-3 semanas<br>
+                                    <strong>Proyectos:</strong> Multi-region deployment, edge optimization
+                                </div>
+                                <a href="paso3.html">Descubrir →</a>
+                            </article>
+
+                            <article class="step-card">
+                                <h3>🔒 Paso 4: Security & Infrastructure</h3>
+                                <p><strong>Domina:</strong> HTTPS, DNS, security headers, vulnerability scanning, compliance</p>
+                                <div class="alert alert-danger">
+                                    <strong>🛡️ Critical:</strong> Security by design, GDPR compliance, penetration testing
+                                </div>
+                                <div class="text-sm" style="margin-top: 1rem;">
+                                    <strong>Tiempo estimado:</strong> 3-4 semanas<br>
+                                    <strong>Proyectos:</strong> Security audit, compliance dashboard
+                                </div>
+                                <a href="paso4.html">Aprender →</a>
+                            </article>
+
+                            <article class="step-card">
+                                <h3>⚡ Paso 5: Full-Stack Evolution</h3>
+                                <p><strong>Domina:</strong> APIs, databases, serverless, microservices, backend integration</p>
+                                <div class="alert alert-info">
+                                    <strong>🚀 Next level:</strong> From static to dynamic, scalable architectures
+                                </div>
+                                <div class="text-sm" style="margin-top: 1rem;">
+                                    <strong>Tiempo estimado:</strong> 2-3 meses<br>
+                                    <strong>Proyectos:</strong> Full-stack application, API design
+                                </div>
+                                <a href="paso5.html">Avanzar →</a>
+                            </article>
+
+                            <article class="step-card">
+                                <h3>💎 Enterprise Architecture</h3>
+                                <p><strong>Domina:</strong> Microservices, Kubernetes, cloud architecture, observability, scaling</p>
+                                <div class="alert alert-success">
+                                    <strong>🏆 Expert level:</strong> Enterprise solutions, team leadership, architecture decisions
+                                </div>
+                                <div class="text-sm" style="margin-top: 1rem;">
+                                    <strong>Tiempo estimado:</strong> 6+ meses<br>
+                                    <strong>Proyectos:</strong> Distributed systems, platform engineering
+                                </div>
+                                <a href="premium.html">Descubrir →</a>
+                            </article>
+                        </div>
+
+                        <section id="recursos-premium" class="content">
+                            <h2>Recursos Exclusivos y Actualizaciones</h2>
+                            
+                            <div class="alert alert-warning">
+                                <strong>📈 Datos de la industria:</strong>
+                                <ul>
+                                    <li>Desarrolladores con skills de deployment ganan 25% más</li>
+                                    <li>97% de empresas tech requieren conocimiento de CI/CD</li>
+                                    <li>El mercado de DevOps crecerá 25% anual hasta 2027</li>
+                                    <li>Conocimiento de cloud es requerido en 89% de ofertas senior</li>
+                                </ul>
+                            </div>
+
+                            <h3>Templates y Starter Kits</h3>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Template</th>
+                                            <th>Tecnología</th>
+                                            <th>Caso de Uso</th>
+                                            <th>Descarga</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Enterprise Landing</td>
+                                            <td>Astro + Tailwind + TypeScript</td>
+                                            <td>Páginas comerciales optimizadas</td>
+                                            <td><code>git clone https://github.com/tu-repo/enterprise-landing</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Documentation Site</td>
+                                            <td>VitePress + Vue 3</td>
+                                            <td>Documentación técnica avanzada</td>
+                                            <td><code>npm create vitepress@latest docs-template</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Portfolio Developer</td>
+                                            <td>Next.js 14 + Framer Motion</td>
+                                            <td>Portfolio profesional interactivo</td>
+                                            <td><code>npx create-next-app@latest --template portfolio-dev</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>E-commerce Static</td>
+                                            <td>Gatsby + Shopify + GraphQL</td>
+                                            <td>Tienda online high-performance</td>
+                                            <td><code>gatsby new store gatsby-shopify-starter</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                    <section id="project-delivery" class="content">
+                        <h2>🎯 Project Delivery: Del Desarrollo a Producción</h2>
+
+                        <div class="alert alert-danger">
+                            <strong>⚠️ El "Valle de la Muerte" del Software:</strong>
+                            <ul>
+                                <li><strong>70% de proyectos</strong> nunca llegan a producción</li>
+                                <li><strong>85% de startups</strong> fallan por problemas de ejecución, no de idea</li>
+                                <li><strong>$50B+ pérdidas anuales</strong> en proyectos IT incompletos</li>
+                                <li><strong>Average time to production:</strong> 6-18 meses (debería ser 2-8 semanas)</li>
+                            </ul>
+                        </div>
+
+                        <h3>Problemáticas Comunes y Soluciones</h3>
+
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Problema</th>
+                                        <th>Síntomas</th>
+                                        <th>Impacto</th>
+                                        <th>Solución Práctica</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Perfeccionismo Técnico</strong></td>
+                                        <td>"Falta optimizar X", "Necesita refactoring"</td>
+                                        <td>Never shipping</td>
+                                        <td>MVP approach: 80% solution → Deploy → Iterate</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Deployment Complexity</strong></td>
+                                        <td>Manual steps, undocumented process</td>
+                                        <td>Fear of deployment</td>
+                                        <td>One-click deployment desde día 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>No Production Environment</strong></td>
+                                        <td>"Solo funciona en mi máquina"</td>
+                                        <td>Integration failures</td>
+                                        <td>Staging environment idéntico a prod</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Missing Monitoring</strong></td>
+                                        <td>No visibility post-deployment</td>
+                                        <td>Silent failures</td>
+                                        <td>Observability desde MVP</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Scope Creep</strong></td>
+                                        <td>"Sería genial si también..."</td>
+                                        <td>Never-ending development</td>
+                                        <td>Fixed scope per release cycle</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Production Readiness Checklist</h3>
+
+                        <div class="code-block">
+                            <pre><code># 🚀 Pre-Launch Checklist (Use this for every project)
+
+## 📋 Core Functionality
+☐ Core features working end-to-end
+☐ Error handling for edge cases
+☐ Form validation and user feedback
+☐ Mobile responsiveness verified
+☐ Cross-browser testing (Chrome, Firefox, Safari, Edge)
+
+## 🔒 Security & Privacy
+☐ HTTPS configured and working
+☐ Input sanitization implemented
+☐ SQL injection protection (if using DB)
+☐ XSS protection headers set
+☐ Privacy policy and legal pages
+☐ GDPR compliance (if EU users)
+
+## ⚡ Performance
+☐ Lighthouse score > 90 for Performance
+☐ Core Web Vitals passing
+☐ Images optimized (WebP/AVIF)
+☐ CSS/JS minified and compressed
+☐ CDN configured for static assets
+
+## 🛠️ Operations
+☐ Domain configured and DNS propagated
+☐ Monitoring/analytics setup (Google Analytics, etc.)
+☐ Error tracking (Sentry, LogRocket)
+☐ Uptime monitoring (UptimeRobot, Pingdom)
+☐ Backup strategy defined
+
+## 📊 Business Readiness
+☐ Contact information visible
+☐ About page with value proposition
+☐ Clear call-to-action
+☐ Social media links
+☐ SEO meta tags optimized
+☐ Search Console configured</code></pre>
+                        </div>
+
+                        <h3>The "Ship It Friday" Framework</h3>
+
+                        <div class="alert alert-success">
+                            <strong>🚢 Metodología Probada:</strong> Empresas como Spotify, GitHub y Buffer usan variaciones de este approach para evitar proyectos estancados.
+                        </div>
+
+                        <div class="code-block">
+                            <pre><code># Ship It Friday - 4 Week Sprint Framework
+
+## Week 1: Foundation & Spike
+- Monday: Project definition & scope lock
+- Tuesday-Thursday: Core feature development
+- Friday: Deploy to staging, show progress
+
+## Week 2: Core Development  
+- Monday-Wednesday: Main functionality
+- Thursday: Integration testing
+- Friday: Demo to stakeholders, gather feedback
+
+## Week 3: Polish & Integration
+- Monday-Tuesday: Bug fixes and polish
+- Wednesday: Security review
+- Thursday: Performance optimization  
+- Friday: Staging deployment with real data
+
+## Week 4: Launch Preparation
+- Monday: Final testing and documentation
+- Tuesday: Production deployment dry-run
+- Wednesday: Monitoring setup and alerting
+- Thursday: Launch preparation
+- Friday: 🚀 GO LIVE
+
+# Key Rules:
+1. No new features after Week 2
+2. No major refactoring after Week 3  
+3. Rollback plan ready before Friday Week 4
+4. Success metrics defined in Week 1</code></pre>
+                        </div>
+
+                        <h3>Common Anti-Patterns to Avoid</h3>
+
+                        <div class="alert alert-warning">
+                            <strong>🚨 Red Flags que Matan Proyectos:</strong>
+                        </div>
+
+                        <ul>
+                            <li><strong>"Lo optimizamos después del launch"</strong> → Nunca pasa. Optimiza lo crítico antes.</li>
+                            <li><strong>"Falta documentar"</strong> → Document as you build, no post-mortem.</li>
+                            <li><strong>"No tenemos tiempo para tests"</strong> → Manual testing toma más tiempo.</li>
+                            <li><strong>"Solo necesitamos configurar el servidor"</strong> → Infrastructure should be code.</li>
+                            <li><strong>"Funciona en local"</strong> → Dev/Prod parity desde día 1.</li>
+                            <li><strong>"Lo arreglamos en v2"</strong> → v2 nunca llega si v1 no shipea.</li>
+                        </ul>
+
+                        <h3>Decision Framework: Ship vs Wait</h3>
+
+                        <div class="code-block">
+                            <pre><code># 🤔 Should I Ship This? Decision Tree
+
+## Green Light (Ship It!)
+✅ Core functionality works for happy path
+✅ No security vulnerabilities  
+✅ Performance acceptable (not perfect)
+✅ Error handling for critical flows
+✅ Can rollback if needed
+✅ Monitoring in place
+
+## Yellow Light (Ship with Mitigations)
+⚠️ Minor bugs in edge cases → Ship with known issues list
+⚠️ Performance could be better → Ship with monitoring, optimize next sprint
+⚠️ Some features incomplete → Ship as beta/limited release
+
+## Red Light (Do NOT Ship)
+🛑 Core functionality broken
+🛑 Security issues present
+🛑 Data loss possible
+🛑 Cannot rollback
+🛑 No monitoring/observability
+🛑 Legal/compliance issues
+
+# Remember: "Perfect is the enemy of good"
+# Ship → Learn → Iterate is always better than Wait → Perfect → Never Ship</code></pre>
+                        </div>
+
+                        <h3>Post-Launch Success Metrics</h3>
+
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Metric Category</th>
+                                        <th>Key Indicators</th>
+                                        <th>Good Target</th>
+                                        <th>Warning Threshold</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Technical Health</strong></td>
+                                        <td>Uptime, Error Rate, Response Time</td>
+                                        <td>99.9%, <0.1%, <200ms</td>
+                                        <td>99%, 1%, 500ms</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>User Experience</strong></td>
+                                        <td>Core Web Vitals, Bounce Rate</td>
+                                        <td>All Green, <40%</td>
+                                        <td>Any Red, >60%</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Business Impact</strong></td>
+                                        <td>Conversions, User Engagement</td>
+                                        <td>Meeting goals</td>
+                                        <td>50% below target</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Growth Indicators</strong></td>
+                                        <td>Traffic, User Retention</td>
+                                        <td>Upward trend</td>
+                                        <td>Declining 2+ weeks</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>💡 Success Story Pattern:</strong>
+                            <p>Las empresas exitosas siguen este patrón: <strong>Ship Early → Measure Everything → Learn Fast → Iterate Rapidly</strong></p>
+                            <p><strong>Ejemplos reales:</strong></p>
+                            <ul>
+                                <li><strong>Twitter:</strong> Empezó como simple SMS service</li>
+                                <li><strong>Instagram:</strong> Burbn → Pivot to photos → $1B acquisition</li>
+                                <li><strong>Slack:</strong> Internal tool → SaaS producto → $27B company</li>
+                                <li><strong>GitHub:</strong> Weekend project → Core development tool → Microsoft acquisition</li>
+                            </ul>
+                        </div>
+
+                        <h3>Emergency Deployment Playbook</h3>
+
+                        <div class="code-block">
+                            <pre><code># 🚨 Production Issues - Response Playbook
+
+## Severity 1: Site Down
+1. Check status page/monitoring (2 min)
+2. Rollback to last known good version (5 min)
+3. Investigate root cause (parallel)
+4. Communicate to users via status page
+5. Post-mortem within 24h
+
+## Severity 2: Feature Broken
+1. Assess impact scope (users affected)
+2. Temporary workaround if possible
+3. Fix forward vs rollback decision
+4. Deploy fix within 4 hours
+5. Monitor for regression
+
+## Severity 3: Performance Degradation  
+1. Check resource utilization
+2. Scale up if infrastructure issue
+3. Identify performance bottleneck
+4. Optimize or schedule maintenance window
+5. Set up alerting to prevent recurrence
+
+# Communication Templates:
+- "We're investigating reports of [issue]"
+- "Issue identified, fix in progress, ETA: [time]"
+- "Issue resolved, monitoring for stability"
+- "Post-mortem available at [link]"</code></pre>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>🎯 Bottom Line:</strong> El mejor código es el que está en producción sirviendo usuarios reales. No dejes que el perfeccionismo mate tu proyecto. Ship it, learn, improve, repeat.
+                        </div>
+                        </section>
+    </main>
+
+    <footer class="nav-container">
+        <div class="container">
+            <p style="text-align: center; padding: 1rem 0;">© 2025 Publica tu Web - Guía para Webmasters Junior</p>
+        </div>
+    </footer>
+</body>
+</html>

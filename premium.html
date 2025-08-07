@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium: Enterprise Architecture - Microservices y Cloud Native | Guía Expert</title>
+    <meta name="description" content="Arquitectura enterprise avanzada: microservices, Kubernetes, distributed systems, observabilidad y platform engineering para equipos de alto rendimiento">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">📚 Publica tu Web</a>
+            <ul class="nav-links">
+                <li><a href="paso1.html">Paso 1</a></li>
+                <li><a href="paso2.html">Paso 2</a></li>
+                <li><a href="paso3.html">Paso 3</a></li>
+                <li><a href="paso4.html">Paso 4</a></li>
+                <li><a href="paso5.html">Paso 5</a></li>
+                <li><a href="premium.html" class="active">Premium</a></li>
+                <li><a href="glosario.html">Glosario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>💎 Enterprise Architecture: Cloud Native & Distributed Systems</h1>
+                <p>Nivel experto: Microservices, Kubernetes, platform engineering y arquitecturas distribuidas para equipos enterprise</p>
+                <div class="alert alert-success">
+                    <strong>🏆 Expert Level:</strong> Contenido para Senior/Staff Engineers, Arquitectos de Software y Platform Engineers
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <!-- Generado automáticamente por script.js -->
+                </aside>
+
+                <div class="main-content">
+                    <section id="enterprise-overview" class="content">
+                        <h2>Enterprise Architecture Landscape 2025</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📊 Market Intelligence:</strong>
+                            <ul>
+                                <li><strong>96% de Fortune 500</strong> usan architecturas cloud-native</li>
+                                <li><strong>$67B</strong> es el mercado de microservices en 2025</li>
+                                <li><strong>300% ROI promedio</strong> con adopción Kubernetes enterprise</li>
+                                <li><strong>45% reducción</strong> en time-to-market con platform engineering</li>
+                                <li><strong>Staff Engineers</strong> con estas skills: $250K-$500K+ USD</li>
+                            </ul>
+                        </div>
+
+                        <h3>Enterprise Architecture Maturity Model</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Level</th>
+                                        <th>Arquitectura</th>
+                                        <th>Deployment</th>
+                                        <th>Observabilidad</th>
+                                        <th>Team Structure</th>
+                                        <th>Business Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Level 1</strong><br>Basic</td>
+                                        <td>Monolito tradicional</td>
+                                        <td>Manual deployment</td>
+                                        <td>Logs básicos</td>
+                                        <td>1-3 developers</td>
+                                        <td>$0-$1M revenue</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Level 2</strong><br>Automated</td>
+                                        <td>Modular monolito</td>
+                                        <td>CI/CD pipelines</td>
+                                        <td>Metrics + alerting</td>
+                                        <td>3-10 developers</td>
+                                        <td>$1M-$10M revenue</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Level 3</strong><br>Distributed</td>
+                                        <td>Microservices SOA</td>
+                                        <td>Container orchestration</td>
+                                        <td>Distributed tracing</td>
+                                        <td>10-50 engineers</td>
+                                        <td>$10M-$100M revenue</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Level 4</strong><br>Cloud Native</td>
+                                        <td>Event-driven architecture</td>
+                                        <td>GitOps + IaC</td>
+                                        <td>Full observability</td>
+                                        <td>50-200 engineers</td>
+                                        <td>$100M-$1B revenue</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Level 5</strong><br>Platform Engineering</td>
+                                        <td>Multi-cloud, edge computing</td>
+                                        <td>Self-service platforms</td>
+                                        <td>AI-driven operations</td>
+                                        <td>200+ engineers</td>
+                                        <td>$1B+ revenue</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Technology Stack: FAANG-Grade Architecture</h3>
+                        <div class="code-block">
+                            <pre><code># Enterprise Technology Matrix 2025
+
+## Core Infrastructure
+- **Container Runtime**: containerd, CRI-O
+- **Orchestration**: Kubernetes 1.29+, Nomad
+- **Service Mesh**: Istio, Linkerd, Consul Connect
+- **API Gateway**: Kong, Ambassador, Traefik
+
+## Data Layer
+- **Distributed Storage**: Ceph, GlusterFS, Longhorn  
+- **Databases**: PostgreSQL, MongoDB, ClickHouse, CockroachDB
+- **Caching**: Redis Cluster, KeyDB, Hazelcast
+- **Message Queues**: Apache Kafka, NATS, RabbitMQ
+
+## Observability Stack
+- **Metrics**: Prometheus + Thanos, DataDog, New Relic
+- **Logging**: ELK Stack, Fluentd, Loki
+- **Tracing**: Jaeger, Zipkin, AWS X-Ray
+- **APM**: Dynatrace, AppDynamics, Elastic APM
+
+## Security & Compliance
+- **Secret Management**: Vault, External Secrets Operator
+- **Policy Engine**: Open Policy Agent (OPA)
+- **Scanning**: Twistlock, Aqua, Snyk
+- **Identity**: Keycloak, Auth0, AWS Cognito
+
+## CI/CD & GitOps
+- **Build**: Tekton, Jenkins X, GitHub Actions
+- **GitOps**: ArgoCD, Flux, GitLab
+- **Registry**: Harbor, ECR, GCR
+- **Testing**: Selenium Grid, TestKube, Chaos Monkey</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="microservices-architecture" class="content">
+                        <h2>Microservices Architecture Patterns</h2>
+
+                        <h3>Domain-Driven Design Implementation</h3>
+                        <div class="code-block">
+                            <pre><code># Microservices Domain Boundaries
+
+## E-commerce Platform Example
+
+### User Domain (user-service)
+Bounded Context: User management, authentication, profiles
+- Entities: User, Profile, Preferences, Session
+- Events: UserRegistered, ProfileUpdated, UserDeactivated
+- API: /users/{id}, /auth/login, /profiles/{userId}
+
+### Product Domain (catalog-service)  
+Bounded Context: Product information, inventory, categories
+- Entities: Product, Category, Inventory, Price
+- Events: ProductCreated, InventoryUpdated, PriceChanged
+- API: /products/{id}, /categories, /inventory/{productId}
+
+### Order Domain (order-service)
+Bounded Context: Order processing, fulfillment, payments
+- Entities: Order, OrderItem, Payment, Shipment  
+- Events: OrderPlaced, PaymentProcessed, OrderShipped
+- API: /orders/{id}, /payments, /shipments/{orderId}
+
+### Notification Domain (notification-service)
+Bounded Context: Multi-channel communications
+- Entities: Notification, Template, Channel, Subscription
+- Events: NotificationSent, DeliveryFailed, SubscriptionChanged
+- API: /notifications, /templates, /subscriptions
+
+## Cross-Cutting Concerns
+- **API Gateway**: Kong with rate limiting, authentication
+- **Service Discovery**: Consul with health checks
+- **Configuration**: Consul KV, Kubernetes ConfigMaps
+- **Monitoring**: Prometheus metrics, Jaeger tracing</code></pre>
+                        </div>
+
+                        <h3>Advanced Communication Patterns</h3>
+                        <div class="code-block">
+                            <pre><code>// Event-Driven Architecture with CQRS
+// src/patterns/event-sourcing.ts
+
+interface DomainEvent {
+  eventId: string
+  eventType: string
+  aggregateId: string
+  aggregateVersion: number
+  eventData: any
+  metadata: {
+    timestamp: string
+    correlationId: string
+    causationId?: string
+    userId?: string
+  }
+}
+
+interface EventStore {
+  saveEvents(aggregateId: string, events: DomainEvent[], expectedVersion: number): Promise<void>
+  getEvents(aggregateId: string, fromVersion?: number): Promise<DomainEvent[]>
+  getAllEvents(fromPosition?: string): AsyncIterable<DomainEvent>
+}
+
+class EventSourcingRepository<T extends AggregateRoot> {
+  constructor(
+    private eventStore: EventStore,
+    private eventBus: EventBus,
+    private aggregateFactory: (events: DomainEvent[]) => T
+  ) {}
+
+  async save(aggregate: T): Promise<void> {
+    const uncommittedEvents = aggregate.getUncommittedEvents()
+    if (uncommittedEvents.length === 0) return
+
+    try {
+      await this.eventStore.saveEvents(
+        aggregate.id,
+        uncommittedEvents,
+        aggregate.version
+      )
+
+      // Publish events for read models and other bounded contexts
+      for (const event of uncommittedEvents) {
+        await this.eventBus.publish(event)
+      }
+
+      aggregate.markEventsAsCommitted()
+    } catch (error) {
+      if (error instanceof ConcurrencyError) {
+        throw new ConflictError(`Aggregate ${aggregate.id} was modified by another process`)
+      }
+      throw error
+    }
+  }
+
+  async getById(aggregateId: string): Promise<T | null> {
+    const events = await this.eventStore.getEvents(aggregateId)
+    if (events.length === 0) return null
+
+    return this.aggregateFactory(events)
+  }
+}
+
+// Saga Pattern for Distributed Transactions
+class OrderProcessingSaga {
+  private sagaId: string
+  private currentStep: number = 0
+  private compensations: Array<() => Promise<void>> = []
+
+  constructor(private eventBus: EventBus) {
+    this.sagaId = generateId()
+  }
+
+  async execute(orderData: OrderData): Promise<void> {
+    try {
+      // Step 1: Reserve inventory
+      await this.reserveInventory(orderData.items)
+      this.compensations.push(() => this.releaseInventory(orderData.items))
+
+      // Step 2: Process payment
+      await this.processPayment(orderData.payment)
+      this.compensations.push(() => this.refundPayment(orderData.payment))
+
+      // Step 3: Create shipment
+      await this.createShipment(orderData.shipping)
+      this.compensations.push(() => this.cancelShipment(orderData.shipping))
+
+      // Step 4: Send confirmation
+      await this.sendConfirmation(orderData.user)
+
+      // Saga completed successfully
+      await this.eventBus.publish({
+        eventId: generateId(),
+        eventType: 'OrderProcessingCompleted',
+        aggregateId: orderData.orderId,
+        aggregateVersion: 1,
+        eventData: { sagaId: this.sagaId, orderId: orderData.orderId },
+        metadata: {
+          timestamp: new Date().toISOString(),
+          correlationId: this.sagaId
+        }
+      })
+
+    } catch (error) {
+      // Execute compensations in reverse order
+      await this.compensate()
+      throw error
+    }
+  }
+
+  private async compensate(): Promise<void> {
+    for (let i = this.compensations.length - 1; i >= 0; i--) {
+      try {
+        await this.compensations[i]()
+      } catch (compensationError) {
+        // Log compensation failure but continue with other compensations
+        console.error(`Compensation ${i} failed:`, compensationError)
+      }
+    }
+
+    await this.eventBus.publish({
+      eventId: generateId(),
+      eventType: 'OrderProcessingFailed',
+      aggregateId: this.sagaId,
+      aggregateVersion: 1,
+      eventData: { sagaId: this.sagaId, compensationsExecuted: this.compensations.length },
+      metadata: {
+        timestamp: new Date().toISOString(),
+        correlationId: this.sagaId
+      }
+    })
+  }
+
+  private async reserveInventory(items: OrderItem[]): Promise<void> {
+    const command = {
+      commandId: generateId(),
+      commandType: 'ReserveInventory',
+      data: { items, sagaId: this.sagaId }
+    }
+
+    await this.eventBus.sendCommand('inventory-service', command)
+  }
+
+  private async processPayment(payment: PaymentData): Promise<void> {
+    const command = {
+      commandId: generateId(),
+      commandType: 'ProcessPayment',
+      data: { ...payment, sagaId: this.sagaId }
+    }
+
+    await this.eventBus.sendCommand('payment-service', command)
+  }
+}
+
+// Circuit Breaker Pattern for External Services
+class CircuitBreaker {
+  private state: 'CLOSED' | 'OPEN' | 'HALF_OPEN' = 'CLOSED'
+  private failureCount = 0
+  private successCount = 0
+  private nextAttempt = 0
+
+  constructor(
+    private failureThreshold: number = 5,
+    private successThreshold: number = 2,
+    private timeout: number = 60000 // 1 minute
+  ) {}
+
+  async execute<T>(operation: () => Promise<T>): Promise<T> {
+    if (this.state === 'OPEN') {
+      if (Date.now() < this.nextAttempt) {
+        throw new Error('Circuit breaker is OPEN')
+      }
+      this.state = 'HALF_OPEN'
+      this.successCount = 0
+    }
+
+    try {
+      const result = await operation()
+      this.onSuccess()
+      return result
+    } catch (error) {
+      this.onFailure()
+      throw error
+    }
+  }
+
+  private onSuccess(): void {
+    this.failureCount = 0
+
+    if (this.state === 'HALF_OPEN') {
+      this.successCount++
+      if (this.successCount >= this.successThreshold) {
+        this.state = 'CLOSED'
+      }
+    }
+  }
+
+  private onFailure(): void {
+    this.failureCount++
+
+    if (this.failureCount >= this.failureThreshold) {
+      this.state = 'OPEN'
+      this.nextAttempt = Date.now() + this.timeout
+    }
+  }
+
+  getState(): string {
+    return this.state
+  }
+}
+
+// Service implementation with circuit breaker
+class PaymentService {
+  private externalPaymentBreaker = new CircuitBreaker(3, 2, 30000)
+
+  async processPayment(paymentData: PaymentData): Promise<PaymentResult> {
+    return this.externalPaymentBreaker.execute(async () => {
+      // External payment provider call
+      const response = await fetch('https://payment-provider.com/api/charge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(paymentData),
+        timeout: 5000
+      })
+
+      if (!response.ok) {
+        throw new Error(`Payment failed: ${response.status}`)
+      }
+
+      return response.json()
+    })
+  }
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="kubernetes-enterprise" class="content">
+                        <h2>Kubernetes Enterprise Deployment</h2>
+
+                        <h3>Production-Grade Cluster Configuration</h3>
+                        <div class="code-block">
+                            <pre><code># Production Kubernetes Cluster Setup
+# cluster-config/production-cluster.yaml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: enterprise-app
+  labels:
+    name: enterprise-app
+    environment: production
+    team: platform
+---
+# Network Policies for micro-segmentation
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: enterprise-app-netpol
+  namespace: enterprise-app
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/part-of: enterprise-app
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: istio-system
+    - namespaceSelector:
+        matchLabels:
+          name: enterprise-app
+    ports:
+    - protocol: TCP
+      port: 8080
+    - protocol: TCP
+      port: 9090  # metrics
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: enterprise-app
+  - to: []  # Allow external egress
+    ports:
+    - protocol: TCP
+      port: 443
+    - protocol: TCP
+      port: 5432  # PostgreSQL
+    - protocol: TCP
+      port: 6379  # Redis
+---
+# Pod Security Policy
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: enterprise-app-psp
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+    - ALL
+  volumes:
+    - 'configMap'
+    - 'emptyDir'
+    - 'projected'
+    - 'secret'
+    - 'downwardAPI'
+    - 'persistentVolumeClaim'
+  runAsUser:
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    rule: 'RunAsAny'
+  fsGroup:
+    rule: 'RunAsAny'
+---
+# Service Mesh Configuration (Istio)
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: enterprise-control-plane
+spec:
+  values:
+    global:
+      meshID: enterprise-mesh
+      multiCluster:
+        clusterName: production-cluster
+      network: production-network
+  components:
+    pilot:
+      k8s:
+        resources:
+          requests:
+            cpu: 500m
+            memory: 2Gi
+        hpaSpec:
+          minReplicas: 2
+          maxReplicas: 5
+          metrics:
+          - type: Resource
+            resource:
+              name: cpu
+              target:
+                type: Utilization
+                averageUtilization: 80
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: true
+      k8s:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 2000m
+            memory: 1024Mi
+        hpaSpec:
+          minReplicas: 3
+          maxReplicas: 10
+        service:
+          type: LoadBalancer
+          annotations:
+            service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+            service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012"</code></pre>
+                        </div>
+
+                        <h3>Advanced Deployment Strategies</h3>
+                        <div class="code-block">
+                            <pre><code># Blue-Green Deployment with Argo Rollouts
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: user-service
+  namespace: enterprise-app
+spec:
+  replicas: 10
+  strategy:
+    blueGreen:
+      activeService: user-service-active
+      previewService: user-service-preview
+      autoPromotionEnabled: false
+      scaleDownDelayAfterPromotion: 30s
+      prePromotionAnalysis:
+        templates:
+        - templateName: success-rate
+        args:
+        - name: service-name
+          value: user-service-preview
+      postPromotionAnalysis:
+        templates:
+        - templateName: success-rate
+        args:
+        - name: service-name
+          value: user-service-active
+  selector:
+    matchLabels:
+      app: user-service
+  template:
+    metadata:
+      labels:
+        app: user-service
+        version: "{{.Values.image.tag}}"
+    spec:
+      containers:
+      - name: user-service
+        image: "{{.Values.image.repository}}:{{.Values.image.tag}}"
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 9090
+          name: metrics
+        env:
+        - name: NODE_ENV
+          value: production
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: user-service-secrets
+              key: database-url
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: user-service-secrets
+              key: redis-url
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+---
+# Analysis Template for Automated Promotion
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate
+spec:
+  args:
+  - name: service-name
+  metrics:
+  - name: success-rate
+    interval: 60s
+    successCondition: result[0] >= 0.95
+    failureLimit: 3
+    provider:
+      prometheus:
+        address: http://prometheus.istio-system.svc.cluster.local:9090
+        query: |
+          sum(
+            rate(
+              istio_requests_total{
+                destination_service_name="{{args.service-name}}",
+                response_code!~"5.*"
+              }[5m]
+            )
+          ) / 
+          sum(
+            rate(
+              istio_requests_total{
+                destination_service_name="{{args.service-name}}"
+              }[5m]
+            )
+          )
+  - name: avg-response-time
+    interval: 60s
+    successCondition: result[0] <= 0.5
+    failureLimit: 3
+    provider:
+      prometheus:
+        address: http://prometheus.istio-system.svc.cluster.local:9090
+        query: |
+          histogram_quantile(0.95,
+            sum(
+              rate(
+                istio_request_duration_milliseconds_bucket{
+                  destination_service_name="{{args.service-name}}"
+                }[5m]
+              )
+            ) by (le)
+          ) / 1000
+---
+# Horizontal Pod Autoscaler with custom metrics
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: user-service-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    name: user-service
+  minReplicas: 3
+  maxReplicas: 50
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  - type: Pods
+    pods:
+      metric:
+        name: requests_per_second
+      target:
+        type: AverageValue
+        averageValue: "100"
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 10
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+      - type: Pods
+        value: 2
+        periodSeconds: 60
+      selectPolicy: Max</code></pre>
+                        </div>
+
+                        <h3>GitOps Pipeline with ArgoCD</h3>
+                        <div class="code-block">
+                            <pre><code># ArgoCD Application Configuration
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: enterprise-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: enterprise
+  source:
+    repoURL: https://github.com/enterprise/k8s-manifests
+    targetRevision: HEAD
+    path: environments/production
+    helm:
+      valueFiles:
+      - values.yaml
+      - secrets://enterprise-secrets/values-secret.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: enterprise-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+    - CreateNamespace=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/replicas
+---
+# Progressive Delivery with Analysis
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: enterprise
+  namespace: argocd
+spec:
+  description: Enterprise applications project
+  sourceRepos:
+  - 'https://github.com/enterprise/*'
+  destinations:
+  - namespace: 'enterprise-*'
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+  namespaceResourceWhitelist:
+  - group: ''
+    kind: Service
+  - group: apps
+    kind: Deployment
+  - group: argoproj.io
+    kind: Rollout
+  roles:
+  - name: enterprise-developers
+    description: Enterprise developers
+    policies:
+    - p, proj:enterprise:enterprise-developers, applications, get, enterprise/*, allow
+    - p, proj:enterprise:enterprise-developers, applications, sync, enterprise/*, allow
+    groups:
+    - enterprise:developers
+  - name: enterprise-admins
+    description: Enterprise administrators
+    policies:
+    - p, proj:enterprise:enterprise-admins, applications, *, enterprise/*, allow
+    - p, proj:enterprise:enterprise-admins, repositories, *, *, allow
+    groups:
+    - enterprise:platform-team</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="observability-distributed" class="content">
+                        <h2>Distributed Systems Observability</h2>
+
+                        <h3>Full-Stack Observability Implementation</h3>
+                        <div class="code-block">
+                            <pre><code># Prometheus Stack Configuration
+# monitoring/prometheus-stack.yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+      external_labels:
+        cluster: 'production'
+        region: 'us-east-1'
+    
+    rule_files:
+    - "/etc/prometheus/rules/*.yml"
+    
+    alerting:
+      alertmanagers:
+      - static_configs:
+        - targets:
+          - alertmanager.monitoring.svc.cluster.local:9093
+    
+    scrape_configs:
+    # Kubernetes API Server
+    - job_name: 'kubernetes-apiservers'
+      kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names:
+          - default
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+        action: keep
+        regex: default;kubernetes;https
+    
+    # Kubernetes Nodes
+    - job_name: 'kubernetes-nodes'
+      kubernetes_sd_configs:
+      - role: node
+      scheme: https
+      tls_config:
+        ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+      relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+    
+    # Application metrics from service mesh
+    - job_name: 'istio-mesh'
+      kubernetes_sd_configs:
+      - role: endpoints
+        namespaces:
+          names:
+          - istio-system
+          - enterprise-app
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+        action: keep
+        regex: istio-proxy;http-monitoring
+    
+    # Custom application metrics
+    - job_name: 'enterprise-app'
+      kubernetes_sd_configs:
+      - role: pod
+        namespaces:
+          names:
+          - enterprise-app
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+        action: replace
+        target_label: __metrics_path__
+        regex: (.+)
+      - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+        action: replace
+        regex: ([^:]+)(?::\d+)?;(\d+)
+        replacement: $1:$2
+        target_label: __address__
+---
+# SLI/SLO Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: slo-rules
+  namespace: monitoring
+data:
+  slo.yml: |
+    groups:
+    - name: user-service-sli
+      interval: 30s
+      rules:
+      # Availability SLI
+      - record: sli:user_service:availability:rate5m
+        expr: |
+          sum(rate(istio_requests_total{
+            destination_service_name="user-service",
+            response_code!~"5.."
+          }[5m])) / 
+          sum(rate(istio_requests_total{
+            destination_service_name="user-service"
+          }[5m]))
+      
+      # Latency SLI (95th percentile)
+      - record: sli:user_service:latency:p95:5m
+        expr: |
+          histogram_quantile(0.95,
+            sum(rate(istio_request_duration_milliseconds_bucket{
+              destination_service_name="user-service"
+            }[5m])) by (le)
+          )
+      
+      # Error Budget Burn Rate
+      - record: sli:user_service:error_budget_burn_rate:5m
+        expr: |
+          (1 - sli:user_service:availability:rate5m) / (1 - 0.999)
+    
+    - name: user-service-slo-alerts
+      rules:
+      # Critical: 2% error budget consumed in 1 hour
+      - alert: UserServiceErrorBudgetBurnCritical
+        expr: |
+          sli:user_service:error_budget_burn_rate:5m > 14.4
+          and
+          sli:user_service:availability:rate5m < 0.999
+        for: 2m
+        labels:
+          severity: critical
+          service: user-service
+        annotations:
+          summary: "User service is burning error budget too fast"
+          description: "User service has consumed 2% of its monthly error budget in the last hour."
+      
+      # Warning: High latency
+      - alert: UserServiceHighLatency
+        expr: |
+          sli:user_service:latency:p95:5m > 500
+        for: 5m
+        labels:
+          severity: warning
+          service: user-service
+        annotations:
+          summary: "User service latency is above SLO"
+          description: "95th percentile latency is {{ $value }}ms, above the 500ms SLO."</code></pre>
+                        </div>
+
+                        <h3>Distributed Tracing with Jaeger</h3>
+                        <div class="code-block">
+                            <pre><code>// Advanced tracing implementation
+// src/observability/distributed-tracing.ts
+
+import { trace, context, SpanStatusCode, SpanKind } from '@opentelemetry/api'
+import { Resource } from '@opentelemetry/resources'
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
+import { NodeSDK } from '@opentelemetry/sdk-node'
+import { JaegerExporter } from '@opentelemetry/exporter-jaeger'
+import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base'
+
+class DistributedTracingManager {
+  private tracer = trace.getTracer('enterprise-app', '2.0.0')
+  private sdk: NodeSDK
+
+  constructor() {
+    this.initializeSDK()
+  }
+
+  private initializeSDK() {
+    const jaegerExporter = new JaegerExporter({
+      endpoint: process.env.JAEGER_ENDPOINT || 'http://jaeger-collector:14268/api/traces'
+    })
+
+    this.sdk = new NodeSDK({
+      resource: new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: process.env.SERVICE_NAME || 'enterprise-service',
+        [SemanticResourceAttributes.SERVICE_VERSION]: process.env.SERVICE_VERSION || '1.0.0',
+        [SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: process.env.NODE_ENV || 'development',
+        [SemanticResourceAttributes.SERVICE_NAMESPACE]: process.env.SERVICE_NAMESPACE || 'enterprise-app'
+      }),
+      spanProcessor: new BatchSpanProcessor(jaegerExporter, {
+        maxQueueSize: 2048,
+        scheduledDelayMillis: 5000,
+        exportTimeoutMillis: 30000,
+        maxExportBatchSize: 512
+      })
+    })
+
+    this.sdk.start()
+  }
+
+  // Advanced span decoration for business operations
+  async traceBusinessOperation<T>(
+    operationName: string,
+    businessContext: {
+      userId?: string
+      tenantId?: string
+      operationType: string
+      entityId?: string
+    },
+    operation: (span: any) => Promise<T>
+  ): Promise<T> {
+    return this.tracer.startActiveSpan(
+      operationName,
+      {
+        kind: SpanKind.INTERNAL,
+        attributes: {
+          'business.operation.type': businessContext.operationType,
+          'business.user.id': businessContext.userId || 'anonymous',
+          'business.tenant.id': businessContext.tenantId || 'default',
+          'business.entity.id': businessContext.entityId || '',
+          'business.operation.name': operationName
+        }
+      },
+      async (span) => {
+        const startTime = Date.now()
+        
+        try {
+          // Add correlation ID from incoming request
+          const correlationId = this.getCorrelationId()
+          if (correlationId) {
+            span.setAttribute('correlation.id', correlationId)
+          }
+
+          const result = await operation(span)
+          
+          span.setStatus({ code: SpanStatusCode.OK })
+          span.setAttribute('business.operation.success', true)
+          span.setAttribute('business.operation.duration_ms', Date.now() - startTime)
+          
+          return result
+        } catch (error) {
+          span.recordException(error)
+          span.setStatus({
+            code: SpanStatusCode.ERROR,
+            message: error.message
+          })
+          span.setAttribute('business.operation.success', false)
+          span.setAttribute('business.error.type', error.constructor.name)
+          span.setAttribute('business.error.code', error.code || 'unknown')
+          
+          throw error
+        } finally {
+          span.end()
+        }
+      }
+    )
+  }
+
+  // Cross-service correlation
+  async traceServiceCall<T>(
+    serviceName: string,
+    operationName: string,
+    operation: () => Promise<T>
+  ): Promise<T> {
+    return this.tracer.startActiveSpan(
+      `${serviceName}.${operationName}`,
+      {
+        kind: SpanKind.CLIENT,
+        attributes: {
+          'service.name': serviceName,
+          'service.operation': operationName,
+          'rpc.system': 'http',
+          'rpc.service': serviceName
+        }
+      },
+      async (span) => {
+        try {
+          // Inject trace context for downstream services
+          const headers = {}
+          trace.setSpanContext(context.active(), trace.wrapSpanContext(span.spanContext()))
+          
+          const result = await operation()
+          
+          span.setStatus({ code: SpanStatusCode.OK })
+          return result
+        } catch (error) {
+          span.recordException(error)
+          span.setStatus({
+            code: SpanStatusCode.ERROR,
+            message: error.message
+          })
+          throw error
+        } finally {
+          span.end()
+        }
+      }
+    )
+  }
+
+  private getCorrelationId(): string | undefined {
+    // Extract correlation ID from current context
+    const activeSpan = trace.getActiveSpan()
+    if (activeSpan) {
+      return activeSpan.spanContext().traceId
+    }
+    return undefined
+  }
+}
+
+// Correlation middleware for Express.js
+export function correlationMiddleware(req: any, res: any, next: any) {
+  const correlationId = req.headers['x-correlation-id'] || generateCorrelationId()
+  
+  // Set correlation ID in response headers
+  res.setHeader('x-correlation-id', correlationId)
+  
+  // Create root span for request
+  const tracer = trace.getTracer('enterprise-app')
+  const span = tracer.startSpan(`${req.method} ${req.path}`, {
+    kind: SpanKind.SERVER,
+    attributes: {
+      'http.method': req.method,
+      'http.url': req.url,
+      'http.scheme': req.protocol,
+      'http.host': req.get('host'),
+      'http.user_agent': req.get('user-agent'),
+      'correlation.id': correlationId,
+      'user.id': req.user?.id || 'anonymous'
+    }
+  })
+
+  // Store correlation context
+  req.correlationId = correlationId
+  req.traceSpan = span
+
+  res.on('finish', () => {
+    span.setAttribute('http.status_code', res.statusCode)
+    span.setAttribute('http.response.size', res.get('content-length') || 0)
+    
+    if (res.statusCode >= 400) {
+      span.setStatus({
+        code: SpanStatusCode.ERROR,
+        message: `HTTP ${res.statusCode}`
+      })
+    } else {
+      span.setStatus({ code: SpanStatusCode.OK })
+    }
+    
+    span.end()
+  })
+
+  next()
+}
+
+// Custom metrics integration
+export class CustomMetrics {
+  private static businessMetrics = new Map<string, any>()
+
+  static recordBusinessEvent(
+    eventName: string,
+    attributes: Record<string, any>,
+    value: number = 1
+  ) {
+    const activeSpan = trace.getActiveSpan()
+    if (activeSpan) {
+      activeSpan.addEvent(eventName, {
+        ...attributes,
+        'event.value': value,
+        'event.timestamp': new Date().toISOString()
+      })
+    }
+
+    // Also record to custom metrics collector
+    this.businessMetrics.set(`${eventName}_${Date.now()}`, {
+      name: eventName,
+      value,
+      attributes,
+      timestamp: Date.now()
+    })
+  }
+
+  static getBusinessMetrics(): any[] {
+    return Array.from(this.businessMetrics.values())
+  }
+}
+
+export const distributedTracing = new DistributedTracingManager()</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="platform-engineering" class="content">
+                        <h2>Platform Engineering & Developer Experience</h2>
+
+                        <div class="alert alert-success">
+                            <strong>🏗️ Platform Engineering ROI:</strong>
+                            <ul>
+                                <li><strong>45% faster</strong> developer onboarding</li>
+                                <li><strong>60% reduction</strong> en deployment issues</li>
+                                <li><strong>3x improvement</strong> en developer productivity</li>
+                                <li><strong>$2.5M savings/year</strong> para equipos de 100+ developers</li>
+                            </ul>
+                        </div>
+
+                        <h3>Self-Service Developer Platform</h3>
+                        <div class="code-block">
+                            <pre><code># Developer Platform Backstage Configuration
+# platform/backstage/app-config.yaml
+
+app:
+  title: Enterprise Developer Platform
+  baseUrl: https://developer.enterprise.com
+
+organization:
+  name: Enterprise Inc
+
+backend:
+  baseUrl: https://developer.enterprise.com
+  listen:
+    port: 7007
+    host: 0.0.0.0
+  cors:
+    origin: https://developer.enterprise.com
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  database:
+    client: pg
+    connection:
+      host: ${POSTGRES_HOST}
+      port: ${POSTGRES_PORT}
+      user: ${POSTGRES_USER}
+      password: ${POSTGRES_PASSWORD}
+      database: backstage_plugin_catalog
+
+integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+  gitlab:
+    - host: gitlab.enterprise.com
+      token: ${GITLAB_TOKEN}
+  azure:
+    - host: dev.azure.com
+      token: ${AZURE_TOKEN}
+
+techdocs:
+  builder: 'external'
+  generator:
+    runIn: 'docker'
+    dockerImage: 'spotify/techdocs'
+  publisher:
+    type: 'awsS3'
+    awsS3:
+      bucketName: 'enterprise-techdocs'
+      region: 'us-east-1'
+
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://k8s-api.production.enterprise.com
+          name: production
+          authProvider: 'serviceAccount'
+          serviceAccountToken: ${K8S_PRODUCTION_TOKEN}
+        - url: https://k8s-api.staging.enterprise.com
+          name: staging
+          authProvider: 'serviceAccount'
+          serviceAccountToken: ${K8S_STAGING_TOKEN}
+
+catalog:
+  providers:
+    github:
+      enterpriseGithub:
+        organization: 'enterprise'
+        catalogPath: '/catalog-info.yaml'
+        filters:
+          branch: 'main'
+          repository: '.*'
+        schedule:
+          frequency: { minutes: 30 }
+          timeout: { minutes: 3 }
+
+scaffolder:
+  defaultAuthor:
+    name: Platform Team
+    email: platform@enterprise.com
+  defaultCommitMessage: 'Initial commit from template'
+
+auth:
+  providers:
+    github:
+      production:
+        clientId: ${AUTH_GITHUB_CLIENT_ID}
+        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+    oidc:
+      production:
+        metadataUrl: ${AUTH_OIDC_METADATA_URL}
+        clientId: ${AUTH_OIDC_CLIENT_ID}
+        clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
+        authorizationUrl: ${AUTH_OIDC_AUTH_URL}
+        tokenUrl: ${AUTH_OIDC_TOKEN_URL}</code></pre>
+                        </div>
+
+                        <h3>Service Templates & Golden Paths</h3>
+                        <div class="code-block">
+                            <pre><code># Service Template for Microservices
+# platform/templates/microservice-template/template.yaml
+
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: microservice-golang
+  title: Go Microservice
+  description: Create a new Go microservice with enterprise standards
+  tags:
+    - recommended
+    - golang
+    - microservice
+spec:
+  owner: platform-team
+  type: service
+  parameters:
+    - title: Fill in some steps
+      required:
+        - name
+        - description
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the service
+          pattern: '^([a-z0-9-]+)$'
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this service does
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the service
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Choose service characteristics
+      properties:
+        hasDatabase:
+          title: Database Required
+          type: boolean
+          description: Does this service need a database?
+        databaseType:
+          title: Database Type
+          type: string
+          description: Which database technology?
+          enum:
+            - postgresql
+            - mysql
+            - mongodb
+            - redis
+          enumNames:
+            - PostgreSQL
+            - MySQL
+            - MongoDB
+            - Redis
+          ui:widget: radio
+        hasQueue:
+          title: Message Queue
+          type: boolean
+          description: Does this service need message queue integration?
+        exposesAPI:
+          title: External API
+          type: boolean
+          description: Does this service expose external APIs?
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          hasDatabase: ${{ parameters.hasDatabase }}
+          databaseType: ${{ parameters.databaseType }}
+          hasQueue: ${{ parameters.hasQueue }}
+          exposesAPI: ${{ parameters.exposesAPI }}
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        repoUrl: github.com?repo=${{ parameters.name }}&owner=enterprise
+        description: ${{ parameters.description }}
+        defaultBranch: main
+        topics:
+          - golang
+          - microservice
+          - enterprise
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
+    - id: create-pr
+      name: Create Infrastructure PR
+      action: github:pullRequest:create
+      input:
+        repoUrl: github.com?repo=infrastructure&owner=enterprise
+        title: 'Add infrastructure for ${{ parameters.name }}'
+        description: |
+          This PR adds infrastructure configuration for the new service: ${{ parameters.name }}
+          
+          Generated by Backstage template.
+        sourceBranch: add-${{ parameters.name }}-infra
+        targetBranch: main
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Infrastructure PR
+        url: ${{ steps.create-pr.output.pullRequestUrl }}
+---
+# Platform monitoring configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: platform-monitoring
+  namespace: backstage
+data:
+  prometheus-rules.yaml: |
+    groups:
+    - name: platform-health
+      rules:
+      - alert: ServiceDeploymentFailed
+        expr: |
+          increase(
+            argocd_app_sync_total{
+              phase="Failed"
+            }[5m]
+          ) > 0
+        labels:
+          severity: critical
+          team: platform
+        annotations:
+          summary: "Service deployment failed"
+          description: "ArgoCD sync failed for {{ $labels.name }}"
+      
+      - alert: HighServiceErrorRate
+        expr: |
+          (
+            sum(rate(istio_requests_total{response_code=~"5.."}[5m])) by (destination_service_name) /
+            sum(rate(istio_requests_total[5m])) by (destination_service_name)
+          ) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "High error rate in service"
+          description: "Service {{ $labels.destination_service_name }} has error rate > 5%"
+      
+      - alert: PlatformCertificateExpiry
+        expr: |
+          cert_manager_certificate_expiration_timestamp_seconds - time() < 7*24*3600
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Certificate expiring soon"
+          description: "Certificate {{ $labels.name }} expires in less than 7 days"</code></pre>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>⚡ Next-Generation Technologies:</strong>
+                            <ul>
+                                <li><strong>WebAssembly (WASM):</strong> Runtime universal, edge computing</li>
+                                <li><strong>eBPF:</strong> Kernel-level observability y networking</li>
+                                <li><strong>Service Mesh 2.0:</strong> Ambient mesh, sidecar-less</li>
+                                <li><strong>GitOps Everything:</strong> Infrastructure, security, compliance</li>
+                                <li><strong>AI/ML Ops:</strong> Model deployment y monitoring</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div class="progress-nav">
+                        <ul class="progress-list">
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item active premium"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nav-container">
+        <div class="container">
+            <p style="text-align: center; padding: 1rem 0;">© 2025 Publica tu Web - Guía para Webmasters Junior</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

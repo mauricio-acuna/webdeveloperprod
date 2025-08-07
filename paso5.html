@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso 5: Full-Stack Evolution - Arquitecturas Escalables | Guía Enterprise</title>
+    <meta name="description" content="Transición de sitios estáticos a arquitecturas full-stack: APIs, serverless, microservices, databases y escalabilidad enterprise">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">📚 Publica tu Web</a>
+            <ul class="nav-links">
+                <li><a href="paso1.html">Paso 1</a></li>
+                <li><a href="paso2.html">Paso 2</a></li>
+                <li><a href="paso3.html">Paso 3</a></li>
+                <li><a href="paso4.html">Paso 4</a></li>
+                <li><a href="paso5.html" class="active">Paso 5</a></li>
+                <li><a href="premium.html">Premium</a></li>
+                <li><a href="glosario.html">Glosario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Full-Stack Evolution: From Static to Dynamic</h1>
+                <p>Arquitecturas modernas escalables: APIs, serverless, microservices y la transición gradual hacia sistemas distribuidos</p>
+                <div class="alert alert-info">
+                    <strong>🎯 Objetivo:</strong> Dominar la arquitectura full-stack moderna con enfoques serverless-first y cloud-native
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <!-- Generado automáticamente por script.js -->
+                </aside>
+
+                <div class="main-content">
+                    <section id="evolucion-arquitectonica" class="content">
+                        <h2>Evolución Arquitectónica: Static → Dynamic → Distributed</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📊 Datos arquitectónicos 2025:</strong>
+                            <ul>
+                                <li>El 87% de aplicaciones enterprise usan arquitecturas híbridas</li>
+                                <li>Serverless ha crecido 250% en adopción desde 2022</li>
+                                <li>El 71% de startups unicornio empezaron con JAMstack</li>
+                                <li>Microservices reducen time-to-market en 40% promedio</li>
+                            </ul>
+                        </div>
+
+                        <h3>Matriz de Decisión Arquitectónica</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Requerimiento</th>
+                                        <th>Static Site</th>
+                                        <th>JAMstack + API</th>
+                                        <th>Full-Stack Serverless</th>
+                                        <th>Microservices</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Time to Market</td>
+                                        <td>1-2 semanas</td>
+                                        <td>2-4 semanas</td>
+                                        <td>4-8 semanas</td>
+                                        <td>3-6 meses</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Costo inicial</td>
+                                        <td>$0-50/mes</td>
+                                        <td>$50-200/mes</td>
+                                        <td>$200-1000/mes</td>
+                                        <td>$2000+/mes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Escalabilidad</td>
+                                        <td>Limitada</td>
+                                        <td>Media-Alta</td>
+                                        <td>Alta</td>
+                                        <td>Ilimitada</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Complejidad</td>
+                                        <td>Baja</td>
+                                        <td>Media</td>
+                                        <td>Media-Alta</td>
+                                        <td>Alta</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Team size</td>
+                                        <td>1-2 devs</td>
+                                        <td>2-5 devs</td>
+                                        <td>3-8 devs</td>
+                                        <td>8+ devs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Roadmap de Migración Progresiva</h3>
+                        <div class="code-block">
+                            <pre><code># Fase 1: Hybrid Static → API Integration
+# Mantener frontend estático, agregar APIs específicas
+
+# Estructura de proyecto híbrido
+my-evolving-app/
+├── frontend/                 # Static site (Astro/Next.js)
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── api/             # API routes para funciones simples
+│   └── package.json
+├── backend/                 # Serverless functions
+│   ├── functions/
+│   │   ├── auth/           # Authentication endpoints  
+│   │   ├── data/           # Data processing
+│   │   └── notifications/  # Email/SMS services
+│   └── serverless.yml
+├── shared/                  # Shared types & utilities
+│   ├── types/
+│   └── utils/
+└── infrastructure/          # IaC for cloud resources
+    ├── terraform/
+    └── docker/
+
+# package.json con scripts de deployment híbrido
+{
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && serverless offline",
+    "build": "npm run build:frontend && npm run build:backend",
+    "deploy:staging": "npm run deploy:backend:staging && npm run deploy:frontend:staging",
+    "deploy:production": "npm run deploy:backend:prod && npm run deploy:frontend:prod"
+  }
+}</code></pre>
+                        </div>
+
+                        <h3>Progressive Enhancement Strategy</h3>
+                        <div class="code-block">
+                            <pre><code>// src/services/progressive-enhancement.ts
+interface FeatureFlag {
+  name: string
+  enabled: boolean
+  rolloutPercentage: number
+  conditions?: {
+    userSegment?: string[]
+    geoLocation?: string[]
+    deviceType?: string[]
+  }
+}
+
+class ProgressiveEnhancementManager {
+  private features: Map<string, FeatureFlag> = new Map()
+  private userContext: any
+
+  constructor(userContext: any) {
+    this.userContext = userContext
+    this.initializeFeatures()
+  }
+
+  private async initializeFeatures() {
+    // Fetch feature flags from API/config
+    const flags = await this.fetchFeatureFlags()
+    flags.forEach(flag => this.features.set(flag.name, flag))
+  }
+
+  isFeatureEnabled(featureName: string): boolean {
+    const feature = this.features.get(featureName)
+    if (!feature) return false
+
+    // Check basic enabled flag
+    if (!feature.enabled) return false
+
+    // Check rollout percentage
+    const userHash = this.hashUser(this.userContext.id)
+    if (userHash > feature.rolloutPercentage) return false
+
+    // Check conditions
+    if (feature.conditions) {
+      if (feature.conditions.userSegment) {
+        if (!feature.conditions.userSegment.includes(this.userContext.segment)) {
+          return false
+        }
+      }
+
+      if (feature.conditions.geoLocation) {
+        if (!feature.conditions.geoLocation.includes(this.userContext.country)) {
+          return false
+        }
+      }
+    }
+
+    return true
+  }
+
+  async enableFeatureGradually(featureName: string) {
+    // Gradual feature enablement
+    if (this.isFeatureEnabled(featureName)) {
+      await this.loadFeatureModule(featureName)
+    } else {
+      // Fallback to static implementation
+      await this.loadStaticFallback(featureName)
+    }
+  }
+
+  private async loadFeatureModule(featureName: string) {
+    try {
+      switch (featureName) {
+        case 'real-time-chat':
+          const { initRealTimeChat } = await import('./features/real-time-chat')
+          return initRealTimeChat()
+        
+        case 'advanced-analytics':
+          const { initAdvancedAnalytics } = await import('./features/analytics')
+          return initAdvancedAnalytics()
+          
+        case 'user-personalization':
+          const { initPersonalization } = await import('./features/personalization')
+          return initPersonalization()
+          
+        default:
+          console.warn(`Unknown feature: ${featureName}`)
+      }
+    } catch (error) {
+      console.error(`Failed to load feature ${featureName}:`, error)
+      await this.loadStaticFallback(featureName)
+    }
+  }
+
+  private async loadStaticFallback(featureName: string) {
+    // Load static/simple implementation
+    console.log(`Loading static fallback for ${featureName}`)
+  }
+
+  private hashUser(userId: string): number {
+    // Simple hash function for consistent rollout
+    let hash = 0
+    for (let i = 0; i < userId.length; i++) {
+      const char = userId.charCodeAt(i)
+      hash = ((hash << 5) - hash) + char
+      hash = hash & hash // Convert to 32bit integer
+    }
+    return Math.abs(hash) % 100
+  }
+}
+
+// Usage in main application
+const enhancementManager = new ProgressiveEnhancementManager({
+  id: 'user123',
+  segment: 'premium',
+  country: 'US'
+})
+
+// Progressive feature loading
+await enhancementManager.enableFeatureGradually('real-time-chat')
+await enhancementManager.enableFeatureGradually('advanced-analytics')</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="serverless-architecture" class="content">
+                        <h2>Arquitectura Serverless Enterprise</h2>
+
+                        <h3>API Gateway + Lambda Functions</h3>
+                        <div class="code-block">
+                            <pre><code># serverless.yml - Configuración enterprise
+service: enterprise-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  
+  environment:
+    STAGE: ${self:provider.stage}
+    REGION: ${self:provider.region}
+    TABLE_NAME: ${self:service}-${self:provider.stage}-data
+    JWT_SECRET: ${ssm:/enterprise-api/${self:provider.stage}/jwt-secret}
+    
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: 
+            - "Fn::GetAtt": [ DataTable, Arn ]
+            - "Fn::Join": [ '/', [ "Fn::GetAtt": [ DataTable, Arn ], 'index', '*' ]]
+
+  apiGateway:
+    restApiId: ${ssm:/enterprise-api/${self:provider.stage}/api-gateway-id}
+    restApiRootResourceId: ${ssm:/enterprise-api/${self:provider.stage}/api-gateway-root-id}
+    
+  logs:
+    restApi:
+      accessLogging: true
+      format: >
+        requestId: $requestId, 
+        ip: $sourceIp, 
+        caller: $context.identity.caller,
+        user: $context.identity.user,
+        requestTime: $requestTime,
+        httpMethod: $httpMethod,
+        resourcePath: $resourcePath,
+        status: $status,
+        protocol: $protocol,
+        responseLength: $responseLength
+
+functions:
+  # Authentication & Authorization
+  auth:
+    handler: src/handlers/auth.handler
+    events:
+      - http:
+          path: /auth/login
+          method: post
+          cors: true
+      - http:
+          path: /auth/refresh
+          method: post
+          cors: true
+    environment:
+      AUTH0_DOMAIN: ${ssm:/enterprise-api/${self:provider.stage}/auth0-domain}
+      AUTH0_CLIENT_ID: ${ssm:/enterprise-api/${self:provider.stage}/auth0-client-id}
+
+  # User management
+  users:
+    handler: src/handlers/users.handler
+    events:
+      - http:
+          path: /users
+          method: get
+          cors: true
+          authorizer: auth
+      - http:
+          path: /users/{id}
+          method: get
+          cors: true
+          authorizer: auth
+      - http:
+          path: /users
+          method: post
+          cors: true
+          authorizer: auth
+    environment:
+      ENCRYPTION_KEY: ${ssm:/enterprise-api/${self:provider.stage}/encryption-key}
+
+  # Data processing
+  dataProcessor:
+    handler: src/handlers/data-processor.handler
+    timeout: 30
+    memorySize: 1024
+    events:
+      - s3:
+          bucket: ${self:service}-${self:provider.stage}-uploads
+          event: s3:ObjectCreated:*
+      - schedule:
+          rate: rate(5 minutes)
+          enabled: true
+    environment:
+      BATCH_SIZE: 100
+      REDIS_URL: ${ssm:/enterprise-api/${self:provider.stage}/redis-url}
+
+  # Real-time notifications
+  notifications:
+    handler: src/handlers/notifications.handler
+    events:
+      - http:
+          path: /notifications
+          method: post
+          cors: true
+      - stream:
+          type: dynamodb
+          arn:
+            Fn::GetAtt: [ DataTable, StreamArn ]
+    environment:
+      WEBSOCKET_API_ID: ${ssm:/enterprise-api/${self:provider.stage}/websocket-api-id}
+      SLACK_WEBHOOK_URL: ${ssm:/enterprise-api/${self:provider.stage}/slack-webhook}
+
+  # Analytics aggregation
+  analytics:
+    handler: src/handlers/analytics.handler
+    reservedConcurrency: 5
+    events:
+      - schedule:
+          rate: rate(1 hour)
+    environment:
+      ANALYTICS_BUCKET: ${self:service}-${self:provider.stage}-analytics
+      ELASTICSEARCH_ENDPOINT: ${ssm:/enterprise-api/${self:provider.stage}/elasticsearch-endpoint}
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-domain-manager
+  - serverless-plugin-tracing
+  - serverless-plugin-canary-deployments
+
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+    packager: 'npm'
+    
+  customDomain:
+    domainName: api.tudominio.com
+    basePath: 'v1'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    
+  deploymentSettings:
+    type: Canary10Percent5Minutes
+    alias: Live
+    preTrafficHook: preHook
+    postTrafficHook: postHook
+    alarms:
+      - AliasErrorMetricGreaterThanZeroAlarm
+      - LatestVersionErrorMetricGreaterThanZeroAlarm
+
+resources:
+  Resources:
+    DataTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.TABLE_NAME}
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+          - AttributeName: sk
+            AttributeType: S
+          - AttributeName: gsi1pk
+            AttributeType: S
+          - AttributeName: gsi1sk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH
+          - AttributeName: sk
+            KeyType: RANGE
+        GlobalSecondaryIndexes:
+          - IndexName: GSI1
+            KeySchema:
+              - AttributeName: gsi1pk
+                KeyType: HASH
+              - AttributeName: gsi1sk
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+            BillingMode: PAY_PER_REQUEST
+        BillingMode: PAY_PER_REQUEST
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        PointInTimeRecoverySpecification:
+          PointInTimeRecoveryEnabled: true
+        
+    CacheCluster:
+      Type: AWS::ElastiCache::CacheCluster
+      Properties:
+        CacheNodeType: cache.t3.micro
+        Engine: redis
+        NumCacheNodes: 1
+        VpcSecurityGroupIds:
+          - Ref: CacheSecurityGroup</code></pre>
+                        </div>
+
+                        <h3>Event-Driven Architecture</h3>
+                        <div class="code-block">
+                            <pre><code>// src/services/event-bus.ts
+interface DomainEvent {
+  id: string
+  type: string
+  aggregateId: string
+  aggregateType: string
+  data: any
+  metadata: {
+    timestamp: string
+    version: number
+    correlationId?: string
+    causationId?: string
+    userId?: string
+  }
+}
+
+class EventBus {
+  private handlers: Map<string, Function[]> = new Map()
+  private middleware: Function[] = []
+
+  constructor(private config: {
+    deadLetterQueue?: string
+    retryPolicy?: {
+      maxRetries: number
+      backoffMultiplier: number
+    }
+  }) {}
+
+  subscribe(eventType: string, handler: Function) {
+    if (!this.handlers.has(eventType)) {
+      this.handlers.set(eventType, [])
+    }
+    this.handlers.get(eventType)!.push(handler)
+  }
+
+  async publish(event: DomainEvent): Promise<void> {
+    // Apply middleware
+    let processedEvent = event
+    for (const middleware of this.middleware) {
+      processedEvent = await middleware(processedEvent)
+    }
+
+    // Get handlers for this event type
+    const handlers = this.handlers.get(event.type) || []
+    
+    // Process handlers in parallel with error handling
+    const promises = handlers.map(async (handler) => {
+      try {
+        await this.executeWithRetry(handler, processedEvent)
+      } catch (error) {
+        await this.handleFailedEvent(event, error)
+      }
+    })
+
+    await Promise.allSettled(promises)
+    
+    // Publish to external message bus (SQS, EventBridge, etc.)
+    await this.publishToExternalBus(processedEvent)
+  }
+
+  private async executeWithRetry(handler: Function, event: DomainEvent, attempt = 1): Promise<void> {
+    try {
+      await handler(event)
+    } catch (error) {
+      if (attempt <= (this.config.retryPolicy?.maxRetries || 3)) {
+        const delay = Math.pow(this.config.retryPolicy?.backoffMultiplier || 2, attempt) * 1000
+        await new Promise(resolve => setTimeout(resolve, delay))
+        return this.executeWithRetry(handler, event, attempt + 1)
+      }
+      throw error
+    }
+  }
+
+  private async publishToExternalBus(event: DomainEvent): Promise<void> {
+    // AWS EventBridge integration
+    const eventBridge = new AWS.EventBridge()
+    
+    await eventBridge.putEvents({
+      Entries: [{
+        Source: 'enterprise-app',
+        DetailType: event.type,
+        Detail: JSON.stringify(event),
+        EventBusName: 'enterprise-event-bus'
+      }]
+    }).promise()
+  }
+
+  use(middleware: Function) {
+    this.middleware.push(middleware)
+  }
+}
+
+// Event handlers implementation
+class UserEventHandlers {
+  constructor(
+    private emailService: EmailService,
+    private analyticsService: AnalyticsService,
+    private cacheService: CacheService
+  ) {}
+
+  @EventHandler('UserRegistered')
+  async handleUserRegistered(event: DomainEvent) {
+    const { user } = event.data
+    
+    // Send welcome email
+    await this.emailService.sendWelcomeEmail(user.email, {
+      name: user.name,
+      userId: user.id
+    })
+    
+    // Track analytics
+    await this.analyticsService.track('user_registered', {
+      userId: user.id,
+      source: event.metadata.source,
+      timestamp: event.metadata.timestamp
+    })
+    
+    // Invalidate cache
+    await this.cacheService.invalidatePattern(`user:${user.id}:*`)
+  }
+
+  @EventHandler('UserProfileUpdated')
+  async handleUserProfileUpdated(event: DomainEvent) {
+    const { userId, changes } = event.data
+    
+    // Update search index
+    await this.searchService.updateUserIndex(userId, changes)
+    
+    // Sync to CRM
+    await this.crmService.syncUser(userId, changes)
+    
+    // Trigger recommendations recalculation
+    await this.recommendationService.scheduleRecalculation(userId)
+  }
+}
+
+// Event Bus initialization
+const eventBus = new EventBus({
+  deadLetterQueue: 'enterprise-dlq',
+  retryPolicy: {
+    maxRetries: 3,
+    backoffMultiplier: 2
+  }
+})
+
+// Middleware for logging, metrics, etc.
+eventBus.use(async (event: DomainEvent) => {
+  console.log(`Processing event: ${event.type}`, {
+    eventId: event.id,
+    aggregateId: event.aggregateId,
+    timestamp: event.metadata.timestamp
+  })
+  return event
+})
+
+// Register handlers
+const userHandlers = new UserEventHandlers(emailService, analyticsService, cacheService)
+eventBus.subscribe('UserRegistered', userHandlers.handleUserRegistered.bind(userHandlers))
+eventBus.subscribe('UserProfileUpdated', userHandlers.handleUserProfileUpdated.bind(userHandlers))</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="database-patterns" class="content">
+                        <h2>Database Patterns y Data Architecture</h2>
+
+                        <h3>Multi-Model Database Strategy</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Data Type</th>
+                                        <th>Database</th>
+                                        <th>Use Case</th>
+                                        <th>Consistency Model</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>User profiles, transactions</td>
+                                        <td>PostgreSQL (RDS)</td>
+                                        <td>ACID transactions</td>
+                                        <td>Strong consistency</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Session data, cache</td>
+                                        <td>Redis (ElastiCache)</td>
+                                        <td>High-speed access</td>
+                                        <td>Eventual consistency</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Product catalog, CMS</td>
+                                        <td>DynamoDB</td>
+                                        <td>Scalable NoSQL</td>
+                                        <td>Eventual consistency</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Analytics events</td>
+                                        <td>ClickHouse</td>
+                                        <td>Time-series analytics</td>
+                                        <td>Eventually consistent</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Full-text search</td>
+                                        <td>Elasticsearch</td>
+                                        <td>Search and aggregations</td>
+                                        <td>Near real-time</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Database Abstraction Layer</h3>
+                        <div class="code-block">
+                            <pre><code>// src/data/repository-pattern.ts
+interface Repository<T> {
+  findById(id: string): Promise<T | null>
+  findMany(criteria: any): Promise<T[]>
+  create(entity: T): Promise<T>
+  update(id: string, updates: Partial<T>): Promise<T>
+  delete(id: string): Promise<void>
+}
+
+interface CacheStrategy {
+  get(key: string): Promise<any>
+  set(key: string, value: any, ttl?: number): Promise<void>
+  invalidate(pattern: string): Promise<void>
+}
+
+abstract class BaseRepository<T> implements Repository<T> {
+  constructor(
+    protected cache: CacheStrategy,
+    protected logger: Logger
+  ) {}
+
+  async findById(id: string): Promise<T | null> {
+    const cacheKey = this.getCacheKey('id', id)
+    
+    // Try cache first
+    const cached = await this.cache.get(cacheKey)
+    if (cached) {
+      this.logger.debug('Cache hit', { key: cacheKey })
+      return cached
+    }
+
+    // Fallback to database
+    const entity = await this.findByIdFromDatabase(id)
+    if (entity) {
+      await this.cache.set(cacheKey, entity, 3600) // 1 hour TTL
+    }
+
+    return entity
+  }
+
+  async update(id: string, updates: Partial<T>): Promise<T> {
+    // Update database
+    const entity = await this.updateInDatabase(id, updates)
+    
+    // Invalidate cache
+    await this.cache.invalidate(`${this.getEntityName()}:${id}:*`)
+    
+    // Publish domain event
+    await this.publishEvent('EntityUpdated', {
+      entityType: this.getEntityName(),
+      entityId: id,
+      changes: updates
+    })
+
+    return entity
+  }
+
+  protected abstract findByIdFromDatabase(id: string): Promise<T | null>
+  protected abstract updateInDatabase(id: string, updates: Partial<T>): Promise<T>
+  protected abstract getEntityName(): string
+  protected abstract getCacheKey(type: string, value: string): string
+  protected abstract publishEvent(type: string, data: any): Promise<void>
+}
+
+// Concrete implementation for Users
+class UserRepository extends BaseRepository<User> {
+  constructor(
+    private db: Database,
+    cache: CacheStrategy,
+    logger: Logger
+  ) {
+    super(cache, logger)
+  }
+
+  protected async findByIdFromDatabase(id: string): Promise<User | null> {
+    const result = await this.db.query(
+      'SELECT * FROM users WHERE id = $1',
+      [id]
+    )
+    return result.rows[0] || null
+  }
+
+  protected async updateInDatabase(id: string, updates: Partial<User>): Promise<User> {
+    const setClause = Object.keys(updates)
+      .map((key, index) => `${key} = $${index + 2}`)
+      .join(', ')
+    
+    const values = [id, ...Object.values(updates)]
+    
+    const result = await this.db.query(
+      `UPDATE users SET ${setClause}, updated_at = NOW() WHERE id = $1 RETURNING *`,
+      values
+    )
+    
+    return result.rows[0]
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    const cacheKey = this.getCacheKey('email', email)
+    
+    const cached = await this.cache.get(cacheKey)
+    if (cached) return cached
+
+    const result = await this.db.query(
+      'SELECT * FROM users WHERE email = $1',
+      [email]
+    )
+
+    const user = result.rows[0] || null
+    if (user) {
+      await this.cache.set(cacheKey, user, 1800) // 30 min TTL
+    }
+
+    return user
+  }
+
+  protected getEntityName(): string {
+    return 'user'
+  }
+
+  protected getCacheKey(type: string, value: string): string {
+    return `user:${type}:${value}`
+  }
+
+  protected async publishEvent(type: string, data: any): Promise<void> {
+    // Integration with event bus
+    await eventBus.publish({
+      id: generateId(),
+      type,
+      aggregateId: data.entityId,
+      aggregateType: 'User',
+      data,
+      metadata: {
+        timestamp: new Date().toISOString(),
+        version: 1
+      }
+    })
+  }
+}
+
+// Data Access Layer with connection pooling
+class DatabaseManager {
+  private pools: Map<string, any> = new Map()
+
+  async getConnection(database: string): Promise<any> {
+    if (!this.pools.has(database)) {
+      const pool = this.createPool(database)
+      this.pools.set(database, pool)
+    }
+    return this.pools.get(database)
+  }
+
+  private createPool(database: string) {
+    switch (database) {
+      case 'postgresql':
+        return new Pool({
+          host: process.env.POSTGRES_HOST,
+          port: parseInt(process.env.POSTGRES_PORT || '5432'),
+          database: process.env.POSTGRES_DB,
+          user: process.env.POSTGRES_USER,
+          password: process.env.POSTGRES_PASSWORD,
+          max: 20,
+          idleTimeoutMillis: 30000,
+          connectionTimeoutMillis: 2000,
+        })
+      
+      case 'redis':
+        return new Redis({
+          host: process.env.REDIS_HOST,
+          port: parseInt(process.env.REDIS_PORT || '6379'),
+          password: process.env.REDIS_PASSWORD,
+          retryDelayOnFailover: 100,
+          maxRetriesPerRequest: 3
+        })
+        
+      default:
+        throw new Error(`Unknown database: ${database}`)
+    }
+  }
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="monitoring-observability" class="content">
+                        <h2>Monitoring y Observabilidad Enterprise</h2>
+
+                        <h3>Distributed Tracing Implementation</h3>
+                        <div class="code-block">
+                            <pre><code>// src/observability/tracing.ts
+import { trace, context, SpanStatusCode, SpanKind } from '@opentelemetry/api'
+import { NodeSDK } from '@opentelemetry/sdk-node'
+import { Resource } from '@opentelemetry/resources'
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
+
+class ObservabilityManager {
+  private tracer = trace.getTracer('enterprise-app', '1.0.0')
+  
+  constructor() {
+    this.initializeSDK()
+  }
+
+  private initializeSDK() {
+    const sdk = new NodeSDK({
+      resource: new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: 'enterprise-api',
+        [SemanticResourceAttributes.SERVICE_VERSION]: process.env.APP_VERSION || '1.0.0',
+        [SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: process.env.NODE_ENV || 'development'
+      }),
+      instrumentations: [
+        // Auto-instrumentation for common libraries
+        // HTTP, Express, AWS SDK, PostgreSQL, Redis, etc.
+      ]
+    })
+    
+    sdk.start()
+  }
+
+  async traceFunction<T>(
+    operationName: string, 
+    fn: () => Promise<T>,
+    attributes?: Record<string, any>
+  ): Promise<T> {
+    return this.tracer.startActiveSpan(operationName, async (span) => {
+      try {
+        // Add custom attributes
+        if (attributes) {
+          Object.entries(attributes).forEach(([key, value]) => {
+            span.setAttributes({ [key]: value })
+          })
+        }
+
+        const result = await fn()
+        
+        span.setStatus({ code: SpanStatusCode.OK })
+        return result
+      } catch (error) {
+        span.recordException(error)
+        span.setStatus({
+          code: SpanStatusCode.ERROR,
+          message: error.message
+        })
+        throw error
+      } finally {
+        span.end()
+      }
+    })
+  }
+
+  // Decorator for automatic tracing
+  trace(operationName?: string) {
+    return (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+      const originalMethod = descriptor.value
+      const spanName = operationName || `${target.constructor.name}.${propertyKey}`
+
+      descriptor.value = async function (...args: any[]) {
+        return observabilityManager.traceFunction(
+          spanName,
+          () => originalMethod.apply(this, args),
+          {
+            'method.class': target.constructor.name,
+            'method.name': propertyKey,
+            'method.args.count': args.length
+          }
+        )
+      }
+
+      return descriptor
+    }
+  }
+}
+
+// Metrics collection
+class MetricsCollector {
+  private metrics: Map<string, any> = new Map()
+
+  constructor(private config: {
+    flushInterval: number
+    endpoint: string
+  }) {
+    this.startFlushTimer()
+  }
+
+  increment(metric: string, value = 1, tags?: Record<string, string>) {
+    const key = this.getMetricKey(metric, tags)
+    const current = this.metrics.get(key) || { value: 0, type: 'counter', tags }
+    this.metrics.set(key, { ...current, value: current.value + value })
+  }
+
+  gauge(metric: string, value: number, tags?: Record<string, string>) {
+    const key = this.getMetricKey(metric, tags)
+    this.metrics.set(key, { value, type: 'gauge', tags, timestamp: Date.now() })
+  }
+
+  histogram(metric: string, value: number, tags?: Record<string, string>) {
+    const key = this.getMetricKey(metric, tags)
+    const current = this.metrics.get(key) || { values: [], type: 'histogram', tags }
+    current.values.push({ value, timestamp: Date.now() })
+    this.metrics.set(key, current)
+  }
+
+  private startFlushTimer() {
+    setInterval(() => {
+      this.flush()
+    }, this.config.flushInterval)
+  }
+
+  private async flush() {
+    if (this.metrics.size === 0) return
+
+    const metricsData = Array.from(this.metrics.entries()).map(([key, data]) => ({
+      name: key.split('|')[0],
+      ...data
+    }))
+
+    try {
+      await fetch(this.config.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          metrics: metricsData,
+          timestamp: Date.now(),
+          service: 'enterprise-api'
+        })
+      })
+
+      this.metrics.clear()
+    } catch (error) {
+      console.error('Failed to flush metrics:', error)
+    }
+  }
+
+  private getMetricKey(metric: string, tags?: Record<string, string>): string {
+    const tagString = tags ? Object.entries(tags).map(([k, v]) => `${k}:${v}`).join(',') : ''
+    return `${metric}|${tagString}`
+  }
+}
+
+// Health check implementation
+class HealthChecker {
+  private checks: Map<string, Function> = new Map()
+
+  register(name: string, checkFunction: () => Promise<boolean>) {
+    this.checks.set(name, checkFunction)
+  }
+
+  async checkHealth(): Promise<{ status: string; checks: any; timestamp: string }> {
+    const results = new Map()
+    
+    for (const [name, checkFn] of this.checks) {
+      try {
+        const startTime = Date.now()
+        const isHealthy = await Promise.race([
+          checkFn(),
+          new Promise<boolean>((_, reject) => 
+            setTimeout(() => reject(new Error('Timeout')), 5000)
+          )
+        ])
+        
+        results.set(name, {
+          status: isHealthy ? 'healthy' : 'unhealthy',
+          responseTime: Date.now() - startTime
+        })
+      } catch (error) {
+        results.set(name, {
+          status: 'unhealthy',
+          error: error.message
+        })
+      }
+    }
+
+    const allHealthy = Array.from(results.values()).every(r => r.status === 'healthy')
+    
+    return {
+      status: allHealthy ? 'healthy' : 'unhealthy',
+      checks: Object.fromEntries(results),
+      timestamp: new Date().toISOString()
+    }
+  }
+}
+
+// Initialize observability
+const observabilityManager = new ObservabilityManager()
+const metricsCollector = new MetricsCollector({
+  flushInterval: 60000, // 1 minute
+  endpoint: process.env.METRICS_ENDPOINT || 'http://localhost:8080/metrics'
+})
+
+const healthChecker = new HealthChecker()
+
+// Register health checks
+healthChecker.register('database', async () => {
+  const db = await databaseManager.getConnection('postgresql')
+  const result = await db.query('SELECT 1')
+  return result.rows.length > 0
+})
+
+healthChecker.register('redis', async () => {
+  const redis = await databaseManager.getConnection('redis')
+  const result = await redis.ping()
+  return result === 'PONG'
+})
+
+healthChecker.register('external-api', async () => {
+  const response = await fetch('https://api.external-service.com/health')
+  return response.ok
+})
+
+export { observabilityManager, metricsCollector, healthChecker }</code></pre>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>🎯 KPIs Full-Stack Enterprise:</strong>
+                            <ul>
+                                <li><strong>API Response Time:</strong> P95 < 200ms, P99 < 500ms</li>
+                                <li><strong>Error Rate:</strong> < 0.1% en requests críticos</li>
+                                <li><strong>Database Query Time:</strong> P95 < 50ms</li>
+                                <li><strong>Cache Hit Rate:</strong> > 90% en datos frecuentes</li>
+                                <li><strong>Deployment Frequency:</strong> Múltiples por día</li>
+                                <li><strong>Recovery Time:</strong> < 5 minutos para fallos</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div class="progress-nav">
+                        <ul class="progress-list">
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item active"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nav-container">
+        <div class="container">
+            <p style="text-align: center; padding: 1rem 0;">© 2025 Publica tu Web - Guía para Webmasters Junior</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

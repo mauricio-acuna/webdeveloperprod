@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso 2: GitHub Pages - Deployment Enterprise | Guía de Publicación Web</title>
+    <meta name="description" content="Domina GitHub Pages con estrategias avanzadas: CI/CD, custom domains, optimización y arquitectura escalable">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">📚 Publica tu Web</a>
+            <ul class="nav-links">
+                <li><a href="paso1.html">Paso 1</a></li>
+                <li><a href="paso2.html" class="active">Paso 2</a></li>
+                <li><a href="paso3.html">Paso 3</a></li>
+                <li><a href="paso4.html">Paso 4</a></li>
+                <li><a href="paso5.html">Paso 5</a></li>
+                <li><a href="premium.html">Premium</a></li>
+                <li><a href="glosario.html">Glosario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>GitHub Pages: Deployment de Nivel Enterprise</h1>
+                <p>Arquitectura escalable, CI/CD avanzado y optimización para sitios estáticos de alto rendimiento</p>
+                <div class="alert alert-info">
+                    <strong>🎯 Objetivo:</strong> Implementar un pipeline de deployment robusto con GitHub Actions, optimización automática y monitorización avanzada
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <!-- Generado automáticamente por script.js -->
+                </aside>
+
+                <div class="main-content">
+                    <section id="github-pages-arquitectura" class="content">
+                        <h2>Arquitectura de GitHub Pages en 2025</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📊 Estadísticas GitHub Pages:</strong>
+                            <ul>
+                                <li>Más de 4 millones de sitios activos</li>
+                                <li>Edge CDN con 200+ ubicaciones globales</li>
+                                <li>99.9% uptime SLA para sitios públicos</li>
+                                <li>Integración nativa con GitHub Actions</li>
+                            </ul>
+                        </div>
+
+                        <h3>Infraestructura y Limitaciones Técnicas</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Recurso</th>
+                                        <th>Límite</th>
+                                        <th>Estrategia de Optimización</th>
+                                        <th>Alternativa Enterprise</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tamaño del repositorio</td>
+                                        <td>1 GB recomendado</td>
+                                        <td>Git LFS para assets grandes</td>
+                                        <td>CDN externo para media</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sitios publicados</td>
+                                        <td>10 builds/hora</td>
+                                        <td>Branch protection + staging</td>
+                                        <td>Self-hosted runners</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bandwidth</td>
+                                        <td>100 GB/mes</td>
+                                        <td>Asset optimization + lazy loading</td>
+                                        <td>CloudFlare proxy</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Archivos</td>
+                                        <td>100 MB máximo</td>
+                                        <td>Code splitting + compression</td>
+                                        <td>External storage APIs</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Configuración Repository Avanzada</h3>
+                        <div class="code-block">
+                            <pre><code># .github/workflows/deploy.yml
+name: 🚀 Production Deployment
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+  CACHE_VERSION: v1
+
+jobs:
+  quality-gate:
+    name: 🔍 Quality Gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Run ESLint
+        run: npm run lint:check
+
+      - name: Run Prettier
+        run: npm run format:check
+
+      - name: Type checking
+        run: npm run type-check
+
+      - name: Run tests
+        run: npm run test:coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+
+  security-scan:
+    name: 🛡️ Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  performance-audit:
+    name: 🚄 Performance Audit
+    runs-on: ubuntu-latest
+    needs: [quality-gate]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.12.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  deploy:
+    name: 🚀 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [quality-gate, security-scan, performance-audit]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Build with optimization
+        run: |
+          npm run build:production
+        env:
+          NODE_ENV: production
+          VITE_BUILD_MODE: production
+          VITE_ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
+
+      - name: Optimize assets
+        run: |
+          npm run optimize:images
+          npm run optimize:fonts
+          npm run generate:webmanifest
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          cname: tudominio.com
+          enable_jekyll: false
+
+      - name: Purge CloudFlare cache
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+
+      - name: Notify deployment
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="optimizacion-build" class="content">
+                        <h2>Optimización del Build Process</h2>
+
+                        <h3>Configuración Vite Avanzada</h3>
+                        <div class="code-block">
+                            <pre><code>// vite.config.ts
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
+import { splitVendorChunkPlugin } from 'vite'
+import { visualizer } from 'rollup-plugin-visualizer'
+import { compressionPlugin } from 'vite-plugin-compression'
+
+export default defineConfig({
+  build: {
+    target: 'es2022',
+    outDir: 'dist',
+    sourcemap: process.env.NODE_ENV !== 'production',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        paso1: resolve(__dirname, 'paso1.html'),
+        paso2: resolve(__dirname, 'paso2.html'),
+        // ... otros archivos
+      },
+      output: {
+        manualChunks: {
+          'vendor-core': ['gsap', 'intersection-observer'],
+          'vendor-utils': ['date-fns', 'lodash-es'],
+        },
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.')
+          const ext = info[info.length - 1]
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
+            return `assets/images/[name].[hash].${ext}`
+          }
+          if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
+            return `assets/fonts/[name].[hash].${ext}`
+          }
+          return `assets/[name].[hash].${ext}`
+        }
+      }
+    },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: process.env.NODE_ENV === 'production',
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info']
+      },
+      format: {
+        comments: false
+      }
+    }
+  },
+  plugins: [
+    splitVendorChunkPlugin(),
+    compressionPlugin({
+      algorithm: 'gzip',
+      ext: '.gz'
+    }),
+    compressionPlugin({
+      algorithm: 'brotliCompress',
+      ext: '.br'
+    }),
+    visualizer({
+      filename: 'dist/stats.html',
+      open: false,
+      gzipSize: true
+    })
+  ],
+  optimizeDeps: {
+    include: ['gsap', 'intersection-observer']
+  }
+})</code></pre>
+                        </div>
+
+                        <h3>Script de Optimización de Assets</h3>
+                        <div class="code-block">
+                            <pre><code>// scripts/optimize-production.js
+import sharp from 'sharp'
+import { glob } from 'glob'
+import fs from 'fs/promises'
+import path from 'path'
+import { minify } from 'terser'
+
+class ProductionOptimizer {
+  constructor() {
+    this.distPath = './dist'
+    this.stats = {
+      imagesOptimized: 0,
+      jsMinified: 0,
+      sizeSaved: 0
+    }
+  }
+
+  async optimizeImages() {
+    const images = await glob(`${this.distPath}/**/*.{jpg,jpeg,png}`)
+    
+    for (const imagePath of images) {
+      const originalSize = (await fs.stat(imagePath)).size
+      
+      // Generar WebP
+      const webpPath = imagePath.replace(/\.(jpg|jpeg|png)$/, '.webp')
+      await sharp(imagePath)
+        .webp({ 
+          quality: 85,
+          effort: 6,
+          lossless: false
+        })
+        .toFile(webpPath)
+      
+      // Optimizar original
+      await sharp(imagePath)
+        .jpeg({ 
+          quality: 90,
+          progressive: true,
+          mozjpeg: true 
+        })
+        .toFile(imagePath + '.tmp')
+      
+      await fs.rename(imagePath + '.tmp', imagePath)
+      
+      const newSize = (await fs.stat(imagePath)).size
+      this.stats.sizeSaved += originalSize - newSize
+      this.stats.imagesOptimized++
+    }
+  }
+
+  async generateCriticalCSS() {
+    const critical = await import('critical')
+    
+    const pages = await glob(`${this.distPath}/**/*.html`)
+    
+    for (const page of pages) {
+      try {
+        await critical.generate({
+          inline: true,
+          base: this.distPath,
+          src: path.relative(this.distPath, page),
+          target: {
+            css: 'critical.css',
+            html: path.relative(this.distPath, page)
+          },
+          width: 1300,
+          height: 900,
+          minify: true
+        })
+      } catch (error) {
+        console.warn(`Critical CSS failed for ${page}:`, error.message)
+      }
+    }
+  }
+
+  async generateServiceWorker() {
+    const swContent = `
+const CACHE_NAME = 'static-cache-v${Date.now()}'
+const STATIC_ASSETS = [
+  '/',
+  '/index.html',
+  '/assets/css/style.css',
+  '/assets/js/main.js'
+]
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(STATIC_ASSETS))
+  )
+  self.skipWaiting()
+})
+
+self.addEventListener('fetch', event => {
+  if (event.request.destination === 'image') {
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          if (response) return response
+          
+          return fetch(event.request)
+            .then(response => {
+              if (response.status === 200) {
+                const responseClone = response.clone()
+                caches.open(CACHE_NAME)
+                  .then(cache => cache.put(event.request, responseClone))
+              }
+              return response
+            })
+        })
+    )
+  }
+})
+    `
+    
+    await fs.writeFile(`${this.distPath}/sw.js`, swContent)
+  }
+
+  async run() {
+    console.log('🚀 Starting production optimization...')
+    
+    await this.optimizeImages()
+    console.log(`✅ Optimized ${this.stats.imagesOptimized} images`)
+    
+    await this.generateCriticalCSS()
+    console.log('✅ Generated critical CSS')
+    
+    await this.generateServiceWorker()
+    console.log('✅ Generated service worker')
+    
+    console.log(`💾 Total size saved: ${(this.stats.sizeSaved / 1024 / 1024).toFixed(2)} MB`)
+  }
+}
+
+new ProductionOptimizer().run()</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="monitoreo-analytics" class="content">
+                        <h2>Monitoreo y Analytics Avanzados</h2>
+
+                        <h3>Implementación de Real User Monitoring (RUM)</h3>
+                        <div class="code-block">
+                            <pre><code>// src/analytics/performance-monitor.ts
+interface PerformanceMetrics {
+  lcp: number
+  fid: number
+  cls: number
+  fcp: number
+  ttfb: number
+}
+
+class PerformanceMonitor {
+  private metrics: Partial<PerformanceMetrics> = {}
+  private apiEndpoint = 'https://api.tudominio.com/analytics'
+
+  constructor() {
+    this.initWebVitals()
+    this.initCustomMetrics()
+  }
+
+  private async initWebVitals() {
+    const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('web-vitals')
+    
+    getCLS(this.handleMetric.bind(this, 'cls'))
+    getFID(this.handleMetric.bind(this, 'fid'))
+    getFCP(this.handleMetric.bind(this, 'fcp'))
+    getLCP(this.handleMetric.bind(this, 'lcp'))
+    getTTFB(this.handleMetric.bind(this, 'ttfb'))
+  }
+
+  private handleMetric(name: keyof PerformanceMetrics, metric: any) {
+    this.metrics[name] = metric.value
+    
+    // Enviar métricas críticas inmediatamente
+    if (['lcp', 'fid', 'cls'].includes(name)) {
+      this.sendMetrics({
+        [name]: metric.value,
+        timestamp: Date.now(),
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        connection: (navigator as any).connection?.effectiveType
+      })
+    }
+  }
+
+  private async sendMetrics(data: any) {
+    try {
+      if ('sendBeacon' in navigator) {
+        navigator.sendBeacon(this.apiEndpoint, JSON.stringify(data))
+      } else {
+        fetch(this.apiEndpoint, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true
+        })
+      }
+    } catch (error) {
+      console.warn('Analytics error:', error)
+    }
+  }
+
+  public trackCustomEvent(name: string, properties: Record<string, any>) {
+    this.sendMetrics({
+      type: 'custom_event',
+      name,
+      properties,
+      timestamp: Date.now(),
+      url: window.location.href
+    })
+  }
+}
+
+// Inicializar monitoreo
+const perfMonitor = new PerformanceMonitor()
+
+// Exportar para uso global
+declare global {
+  interface Window {
+    trackEvent: (name: string, properties?: Record<string, any>) => void
+  }
+}
+
+window.trackEvent = perfMonitor.trackCustomEvent.bind(perfMonitor)</code></pre>
+                        </div>
+
+                        <h3>Dashboard de Métricas con GitHub Actions</h3>
+                        <div class="code-block">
+                            <pre><code># .github/workflows/performance-monitoring.yml
+name: 📊 Performance Monitoring
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Cada 6 horas
+  workflow_dispatch:
+
+jobs:
+  lighthouse-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            https://tudominio.com
+            https://tudominio.com/paso1.html
+            https://tudominio.com/paso2.html
+          budgetPath: lighthouse-budget.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Generate performance report
+        run: |
+          echo "## Performance Report 📊" >> $GITHUB_STEP_SUMMARY
+          echo "| Page | Performance | Accessibility | Best Practices | SEO |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------------|---------------|----------------|-----|" >> $GITHUB_STEP_SUMMARY
+          # Parse lighthouse results and format as table
+
+  uptime-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check website uptime
+        uses: srt32/uptime-monitor-action@v2
+        with:
+          url-to-hit: "https://tudominio.com"
+          expected-statuses: "200,301,302"
+
+      - name: Notify if down
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          text: "🚨 Website is down! Please check immediately."
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}</code></pre>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>🎯 Métricas objetivo para sitios enterprise:</strong>
+                            <ul>
+                                <li><strong>Performance Score:</strong> 95+ en Lighthouse</li>
+                                <li><strong>LCP:</strong> < 1.2s (excelente)</li>
+                                <li><strong>FID:</strong> < 50ms (excelente)</li>
+                                <li><strong>CLS:</strong> < 0.05 (excelente)</li>
+                                <li><strong>Uptime:</strong> 99.95% mensual</li>
+                                <li><strong>TTFB:</strong> < 200ms</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div class="progress-nav">
+                        <ul class="progress-list">
+                            <li class="progress-item"></li>
+                            <li class="progress-item active"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nav-container">
+        <div class="container">
+            <p style="text-align: center; padding: 1rem 0;">© 2025 Publica tu Web - Guía para Webmasters Junior</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

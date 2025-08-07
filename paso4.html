@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso 4: Security & Infrastructure Enterprise | Guía Avanzada</title>
+    <meta name="description" content="Seguridad web enterprise: HTTPS, DNS, headers de seguridad, compliance, vulnerability scanning y arquitectura zero-trust">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">📚 Publica tu Web</a>
+            <ul class="nav-links">
+                <li><a href="paso1.html">Paso 1</a></li>
+                <li><a href="paso2.html">Paso 2</a></li>
+                <li><a href="paso3.html">Paso 3</a></li>
+                <li><a href="paso4.html" class="active">Paso 4</a></li>
+                <li><a href="paso5.html">Paso 5</a></li>
+                <li><a href="premium.html">Premium</a></li>
+                <li><a href="glosario.html">Glosario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Security & Infrastructure Enterprise</h1>
+                <p>Implementación de seguridad web de nivel enterprise: Zero-trust, compliance, monitoring y threat detection</p>
+                <div class="alert alert-danger">
+                    <strong>🛡️ Crítico:</strong> En 2025, el 95% de brechas de seguridad podrían haberse evitado con configuraciones correctas de seguridad web
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <!-- Generado automáticamente por script.js -->
+                </aside>
+
+                <div class="main-content">
+                    <section id="fundamentos-seguridad" class="content">
+                        <h2>Fundamentos de Seguridad Web Enterprise</h2>
+                        
+                        <div class="alert alert-warning">
+                            <strong>📊 Estadísticas de ciberseguridad 2025:</strong>
+                            <ul>
+                                <li>El costo promedio de una brecha de datos es $4.88M USD</li>
+                                <li>El 43% de ataques se dirigen a pequeñas y medianas empresas</li>
+                                <li>El tiempo promedio para detectar una brecha es 287 días</li>
+                                <li>El 95% de brechas exitosas son debido a error humano</li>
+                            </ul>
+                        </div>
+
+                        <h3>Threat Model para Sitios Web Estáticos</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Vector de Ataque</th>
+                                        <th>Probabilidad</th>
+                                        <th>Impacto</th>
+                                        <th>Mitigación</th>
+                                        <th>Costo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>XSS (Cross-Site Scripting)</td>
+                                        <td>Alta</td>
+                                        <td>Medio</td>
+                                        <td>CSP headers, input sanitization</td>
+                                        <td>Bajo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Clickjacking</td>
+                                        <td>Media</td>
+                                        <td>Medio</td>
+                                        <td>X-Frame-Options, CSP frame-ancestors</td>
+                                        <td>Muy bajo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MITM (Man-in-the-Middle)</td>
+                                        <td>Media</td>
+                                        <td>Alto</td>
+                                        <td>HTTPS, HSTS, Certificate Pinning</td>
+                                        <td>Bajo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Supply Chain Attack</td>
+                                        <td>Baja</td>
+                                        <td>Crítico</td>
+                                        <td>SRI, dependency scanning, SBOM</td>
+                                        <td>Medio</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DDoS</td>
+                                        <td>Media</td>
+                                        <td>Alto</td>
+                                        <td>CDN protection, rate limiting</td>
+                                        <td>Medio</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Configuración de Seguridad Avanzada</h3>
+                        <div class="code-block">
+                            <pre><code># nginx/security-headers.conf
+# Configuración enterprise de headers de seguridad
+
+server {
+    listen 443 ssl http2;
+    server_name tudominio.com;
+    
+    # SSL/TLS Configuration
+    ssl_certificate /path/to/cert.pem;
+    ssl_certificate_key /path/to/private.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384;
+    ssl_prefer_server_ciphers off;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    
+    # OCSP Stapling
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    ssl_trusted_certificate /path/to/chain.pem;
+    
+    # Security Headers
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+    
+    # Content Security Policy
+    add_header Content-Security-Policy "
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' data: https: blob:;
+        connect-src 'self' https://api.tudominio.com;
+        media-src 'self';
+        object-src 'none';
+        child-src 'none';
+        worker-src 'self';
+        frame-ancestors 'none';
+        form-action 'self';
+        base-uri 'self';
+        manifest-src 'self';
+        upgrade-insecure-requests;
+        block-all-mixed-content;
+    " always;
+    
+    # Additional Security
+    add_header X-Permitted-Cross-Domain-Policies "none" always;
+    add_header Clear-Site-Data "cache,cookies,storage" always;
+    
+    # Rate Limiting
+    limit_req zone=general burst=20 nodelay;
+    limit_req zone=api burst=10 nodelay;
+    
+    # Hide Server Information
+    server_tokens off;
+    more_clear_headers Server;
+    
+    location / {
+        try_files $uri $uri/ /index.html;
+        
+        # Cache Control for different file types
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+            add_header Vary "Accept-Encoding";
+        }
+        
+        location ~* \.html$ {
+            expires 1h;
+            add_header Cache-Control "public, must-revalidate";
+        }
+    }
+    
+    # Security.txt endpoint
+    location /.well-known/security.txt {
+        return 200 "Contact: security@tudominio.com\nExpires: 2025-12-31T23:59:59.000Z\nPreferred-Languages: en, es\nCanonical: https://tudominio.com/.well-known/security.txt";
+        add_header Content-Type text/plain;
+    }
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="compliance-automation" class="content">
+                        <h2>Compliance y Automatización de Seguridad</h2>
+
+                        <h3>GDPR Compliance Automation</h3>
+                        <div class="code-block">
+                            <pre><code>// src/compliance/gdpr-manager.ts
+interface GDPRConfig {
+  cookieBanner: boolean
+  dataProcessing: string[]
+  retentionPeriod: number
+  dpoContact: string
+}
+
+class GDPRComplianceManager {
+  private config: GDPRConfig
+  private userConsent: Map<string, any> = new Map()
+  
+  constructor(config: GDPRConfig) {
+    this.config = config
+    this.initializeComplianceFramework()
+  }
+
+  private initializeComplianceFramework() {
+    // Detectar si el usuario está en la UE
+    this.checkEUUser().then(isEU => {
+      if (isEU) {
+        this.enableGDPRMode()
+      }
+    })
+    
+    // Auto-delete data based on retention policy
+    this.scheduleDataRetentionCleanup()
+  }
+
+  private async checkEUUser(): Promise<boolean> {
+    try {
+      const response = await fetch('/api/geolocation')
+      const data = await response.json()
+      
+      const euCountries = [
+        'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
+        'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
+        'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE'
+      ]
+      
+      return euCountries.includes(data.country)
+    } catch {
+      // Default to GDPR compliance if can't determine
+      return true
+    }
+  }
+
+  private enableGDPRMode() {
+    this.showCookieBanner()
+    this.enableDataSubjectRights()
+    this.logDataProcessingActivities()
+  }
+
+  private showCookieBanner() {
+    const banner = document.createElement('div')
+    banner.className = 'gdpr-banner'
+    banner.innerHTML = `
+      <div class="gdpr-content">
+        <h3>🍪 Respetamos tu privacidad</h3>
+        <p>Utilizamos cookies esenciales para el funcionamiento del sitio y cookies analíticas para mejorar tu experiencia.</p>
+        <div class="gdpr-actions">
+          <button id="accept-all" class="btn-primary">Aceptar todo</button>
+          <button id="reject-all" class="btn-secondary">Rechazar todo</button>
+          <button id="customize" class="btn-text">Personalizar</button>
+        </div>
+      </div>
+    `
+    
+    document.body.appendChild(banner)
+    this.attachBannerEvents(banner)
+  }
+
+  private enableDataSubjectRights() {
+    // API endpoints para derechos GDPR
+    this.createDataSubjectAPI()
+  }
+
+  private createDataSubjectAPI() {
+    // Endpoint para solicitud de datos
+    window.addEventListener('message', async (event) => {
+      if (event.data.type === 'gdpr-data-request') {
+        const userData = await this.exportUserData(event.data.userId)
+        event.source?.postMessage({
+          type: 'gdpr-data-response',
+          data: userData
+        }, event.origin)
+      }
+      
+      if (event.data.type === 'gdpr-delete-request') {
+        await this.deleteUserData(event.data.userId)
+        event.source?.postMessage({
+          type: 'gdpr-delete-response',
+          success: true
+        }, event.origin)
+      }
+    })
+  }
+
+  private async exportUserData(userId: string): Promise<any> {
+    // Compile all user data for export
+    return {
+      personalData: {
+        userId,
+        createdAt: new Date().toISOString(),
+        dataCategories: this.config.dataProcessing
+      },
+      analytics: await this.getAnalyticsData(userId),
+      preferences: await this.getUserPreferences(userId),
+      exportedAt: new Date().toISOString(),
+      format: 'JSON',
+      rightsInformation: {
+        contact: this.config.dpoContact,
+        retention: `${this.config.retentionPeriod} days`,
+        lawfulBasis: 'Legitimate interest, Consent'
+      }
+    }
+  }
+
+  private scheduleDataRetentionCleanup() {
+    // Run daily cleanup
+    setInterval(() => {
+      this.cleanupExpiredData()
+    }, 24 * 60 * 60 * 1000)
+  }
+
+  private async cleanupExpiredData() {
+    const cutoffDate = new Date()
+    cutoffDate.setDate(cutoffDate.getDate() - this.config.retentionPeriod)
+    
+    // Remove data older than retention period
+    const expiredKeys = []
+    for (const [key, data] of this.userConsent) {
+      if (new Date(data.timestamp) < cutoffDate) {
+        expiredKeys.push(key)
+      }
+    }
+    
+    expiredKeys.forEach(key => this.userConsent.delete(key))
+    
+    console.log(`GDPR: Cleaned up ${expiredKeys.length} expired data entries`)
+  }
+}
+
+// Inicializar GDPR compliance
+const gdprManager = new GDPRComplianceManager({
+  cookieBanner: true,
+  dataProcessing: ['Analytics', 'Performance Monitoring', 'Error Tracking'],
+  retentionPeriod: 730, // 2 years
+  dpoContact: 'privacy@tudominio.com'
+})</code></pre>
+                        </div>
+
+                        <h3>Automated Security Scanning</h3>
+                        <div class="code-block">
+                            <pre><code># .github/workflows/security-scan.yml
+name: 🔒 Security Scanning Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM
+
+jobs:
+  dependency-scan:
+    name: 📦 Dependency Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+
+      - name: Snyk security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=medium --fail-on=all
+
+      - name: Upload results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: snyk.sarif
+
+  sast-scan:
+    name: 🔍 Static Application Security Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript, typescript
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+      - name: ESLint Security Scan
+        run: |
+          npm install eslint-plugin-security
+          npx eslint --ext .js,.ts src/ --format=sarif --output-file=eslint-results.sarif
+
+      - name: Upload ESLint results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: eslint-results.sarif
+
+  container-scan:
+    name: 🐳 Container Security Scan
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t website:${{ github.sha }} .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'website:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  web-security-scan:
+    name: 🌐 Web Application Security Testing
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: OWASP ZAP Security Scan
+        uses: zaproxy/action-full-scan@v0.7.0
+        with:
+          target: 'https://tudominio.com'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
+
+      - name: Mozilla Observatory Scan
+        run: |
+          curl -X POST https://http-observatory.security.mozilla.org/api/v1/analyze?host=tudominio.com
+          sleep 30
+          curl https://http-observatory.security.mozilla.org/api/v1/analyze?host=tudominio.com > observatory-results.json
+
+      - name: SSL Labs Scan
+        run: |
+          curl "https://api.ssllabs.com/api/v3/analyze?host=tudominio.com&publish=off&startNew=on&all=done" > ssl-results.json
+
+      - name: Security Headers Check
+        run: |
+          python3 -c "
+          import requests
+          import json
+          
+          response = requests.get('https://tudominio.com')
+          headers = response.headers
+          
+          required_headers = {
+              'Strict-Transport-Security': 'HSTS missing',
+              'Content-Security-Policy': 'CSP missing', 
+              'X-Frame-Options': 'X-Frame-Options missing',
+              'X-Content-Type-Options': 'X-Content-Type-Options missing'
+          }
+          
+          issues = []
+          for header, message in required_headers.items():
+              if header not in headers:
+                  issues.append(message)
+          
+          if issues:
+              print('Security headers issues found:')
+              for issue in issues:
+                  print(f'- {issue}')
+              exit(1)
+          else:
+              print('All required security headers present')
+          "
+
+  compliance-check:
+    name: 📋 Compliance Verification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: GDPR Compliance Check
+        run: |
+          # Check for privacy policy
+          curl -f https://tudominio.com/privacy-policy || echo "::warning::Privacy policy not found"
+          
+          # Check for cookie banner implementation
+          grep -r "cookie" src/ || echo "::warning::Cookie consent mechanism not found"
+          
+          # Check for data retention policies
+          grep -r "retention" src/ || echo "::warning::Data retention policies not implemented"
+
+      - name: Accessibility Compliance (WCAG)
+        run: |
+          npm install -g @axe-core/cli
+          axe https://tudominio.com --exit</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="infrastructure-security" class="content">
+                        <h2>Infrastructure as Code Security</h2>
+
+                        <h3>Terraform Security Configuration</h3>
+                        <div class="code-block">
+                            <pre><code># terraform/security.tf
+# Enterprise security infrastructure
+
+# WAF Configuration
+resource "aws_wafv2_web_acl" "main" {
+  name  = "website-protection"
+  scope = "CLOUDFRONT"
+
+  default_action {
+    allow {}
+  }
+
+  # OWASP Top 10 Protection
+  rule {
+    name     = "AWS-AWSManagedRulesCommonRuleSet"
+    priority = 1
+
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesCommonRuleSet"
+        vendor_name = "AWS"
+        
+        excluded_rule {
+          name = "SizeRestrictions_BODY"
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "CommonRuleSetMetric"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Rate limiting
+  rule {
+    name     = "RateLimitRule"
+    priority = 2
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = 2000
+        aggregate_key_type = "IP"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitMetric"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Geographic blocking (if needed)
+  rule {
+    name     = "GeoBlockRule"
+    priority = 3
+
+    action {
+      block {}
+    }
+
+    statement {
+      geo_match_statement {
+        country_codes = ["CN", "RU", "KP"]  # Example: block certain countries
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "GeoBlockMetric"
+      sampled_requests_enabled   = true
+    }
+  }
+}
+
+# CloudFront Distribution with Security
+resource "aws_cloudfront_distribution" "main" {
+  web_acl_id = aws_wafv2_web_acl.main.arn
+
+  origin {
+    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
+    origin_id   = "S3-${aws_s3_bucket.website.bucket}"
+
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.main.cloudfront_access_identity_path
+    }
+  }
+
+  enabled             = true
+  is_ipv6_enabled     = true
+  default_root_object = "index.html"
+
+  # Security headers via Lambda@Edge
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-${aws_s3_bucket.website.bucket}"
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    lambda_function_association {
+      event_type   = "viewer-response"
+      lambda_arn   = aws_lambda_function.security_headers.qualified_arn
+      include_body = false
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  # SSL/TLS Configuration
+  viewer_certificate {
+    acm_certificate_arn      = aws_acm_certificate.main.arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+}
+
+# Lambda@Edge for Security Headers
+resource "aws_lambda_function" "security_headers" {
+  filename         = "security_headers.zip"
+  function_name    = "security-headers"
+  role            = aws_iam_role.lambda_edge.arn
+  handler         = "index.handler"
+  source_code_hash = filebase64sha256("security_headers.zip")
+  runtime         = "nodejs18.x"
+  publish         = true
+
+  depends_on = [
+    aws_iam_role_policy_attachment.lambda_edge,
+    aws_cloudwatch_log_group.lambda_edge,
+  ]
+}
+
+# Security monitoring
+resource "aws_cloudwatch_log_group" "waf" {
+  name              = "/aws/wafv2/website-protection"
+  retention_in_days = 30
+}
+
+resource "aws_cloudwatch_metric_alarm" "high_error_rate" {
+  alarm_name          = "website-high-error-rate"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = "2"
+  metric_name         = "4xxErrorRate"
+  namespace           = "AWS/CloudFront"
+  period              = "120"
+  statistic           = "Average"
+  threshold           = "10"
+  alarm_description   = "This metric monitors CloudFront 4xx error rate"
+  alarm_actions       = [aws_sns_topic.alerts.arn]
+}
+
+# Certificate with automatic renewal
+resource "aws_acm_certificate" "main" {
+  domain_name       = "tudominio.com"
+  validation_method = "DNS"
+
+  subject_alternative_names = [
+    "www.tudominio.com",
+    "*.tudominio.com"
+  ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}</code></pre>
+                        </div>
+
+                        <h3>Security Headers Lambda@Edge</h3>
+                        <div class="code-block">
+                            <pre><code>// lambda/security-headers.js
+exports.handler = (event, context, callback) => {
+    const response = event.Records[0].cf.response;
+    const headers = response.headers;
+    
+    // Security Headers
+    headers['strict-transport-security'] = [{
+        key: 'Strict-Transport-Security',
+        value: 'max-age=63072000; includeSubdomains; preload'
+    }];
+    
+    headers['content-security-policy'] = [{
+        key: 'Content-Security-Policy',
+        value: `
+            default-src 'self';
+            script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.google-analytics.com;
+            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+            font-src 'self' https://fonts.gstatic.com;
+            img-src 'self' data: https: blob:;
+            connect-src 'self' https://api.tudominio.com https://www.google-analytics.com;
+            media-src 'self';
+            object-src 'none';
+            child-src 'none';
+            worker-src 'self' blob:;
+            frame-ancestors 'none';
+            form-action 'self';
+            base-uri 'self';
+            manifest-src 'self';
+            upgrade-insecure-requests;
+            block-all-mixed-content;
+        `.replace(/\s+/g, ' ').trim()
+    }];
+    
+    headers['x-content-type-options'] = [{
+        key: 'X-Content-Type-Options',
+        value: 'nosniff'
+    }];
+    
+    headers['x-frame-options'] = [{
+        key: 'X-Frame-Options',
+        value: 'DENY'
+    }];
+    
+    headers['x-xss-protection'] = [{
+        key: 'X-XSS-Protection',
+        value: '1; mode=block'
+    }];
+    
+    headers['referrer-policy'] = [{
+        key: 'Referrer-Policy',
+        value: 'strict-origin-when-cross-origin'
+    }];
+    
+    headers['permissions-policy'] = [{
+        key: 'Permissions-Policy',
+        value: 'camera=(), microphone=(), geolocation=(), payment=()'
+    }];
+    
+    // Remove server information
+    delete headers['server'];
+    delete headers['x-powered-by'];
+    
+    // Add custom security header
+    headers['x-security-scan'] = [{
+        key: 'X-Security-Scan',
+        value: `scanned-${new Date().toISOString()}`
+    }];
+    
+    callback(null, response);
+};</code></pre>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>🛡️ Security Checklist Enterprise:</strong>
+                            <ul>
+                                <li><strong>SSL/TLS:</strong> TLS 1.3, Perfect Forward Secrecy, HSTS preload</li>
+                                <li><strong>Headers:</strong> CSP, X-Frame-Options, NOSNIFF, Referrer Policy</li>
+                                <li><strong>Monitoring:</strong> WAF logs, error rate alerts, security scanning</li>
+                                <li><strong>Compliance:</strong> GDPR, CCPA, SOC2 Type II, ISO 27001</li>
+                                <li><strong>Incident Response:</strong> Playbooks, escalation, forensics</li>
+                                <li><strong>Penetration Testing:</strong> Quarterly external, continuous internal</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div class="progress-nav">
+                        <ul class="progress-list">
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item active"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nav-container">
+        <div class="container">
+            <p style="text-align: center; padding: 1rem 0;">© 2025 Publica tu Web - Guía para Webmasters Junior</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

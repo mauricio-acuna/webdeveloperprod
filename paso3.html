@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso 3: Multi-Platform Strategy & Edge Computing | Guía Enterprise</title>
+    <meta name="description" content="Domina Netlify, Vercel, CloudFlare y estrategias multi-cloud para deployment global de alta disponibilidad">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">📚 Publica tu Web</a>
+            <ul class="nav-links">
+                <li><a href="paso1.html">Paso 1</a></li>
+                <li><a href="paso2.html">Paso 2</a></li>
+                <li><a href="paso3.html" class="active">Paso 3</a></li>
+                <li><a href="paso4.html">Paso 4</a></li>
+                <li><a href="paso5.html">Paso 5</a></li>
+                <li><a href="premium.html">Premium</a></li>
+                <li><a href="glosario.html">Glosario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Multi-Platform Strategy & Edge Computing</h1>
+                <p>Arquitecturas distribuidas, CDN global y optimización edge para sitios web de escala enterprise</p>
+                <div class="alert alert-info">
+                    <strong>🎯 Objetivo:</strong> Implementar estrategias multi-cloud con failover automático, edge computing y optimización global de latencia
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <!-- Generado automáticamente por script.js -->
+                </aside>
+
+                <div class="main-content">
+                    <section id="plataformas-enterprise" class="content">
+                        <h2>Comparativa Técnica Avanzada de Plataformas</h2>
+                        
+                        <div class="alert alert-info">
+                            <strong>📊 Datos de la industria 2025:</strong>
+                            <ul>
+                                <li>El 78% de sitios enterprise usan múltiples CDNs para redundancia</li>
+                                <li>Edge computing reduce latencia promedio en 65%</li>
+                                <li>El 92% de Fortune 500 usa estrategias multi-cloud</li>
+                                <li>JAMstack ha crecido 150% en adopción enterprise</li>
+                            </ul>
+                        </div>
+
+                        <h3>Análisis Técnico Detallado por Plataforma</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Plataforma</th>
+                                        <th>Edge Locations</th>
+                                        <th>Cold Start</th>
+                                        <th>Build Time</th>
+                                        <th>Bandwidth/mes</th>
+                                        <th>Enterprise SLA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Vercel</td>
+                                        <td>280+ (AWS CloudFront)</td>
+                                        <td>~50ms</td>
+                                        <td>2-5min</td>
+                                        <td>100GB free, $20/100GB</td>
+                                        <td>99.99%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Netlify</td>
+                                        <td>180+ (AWS CloudFront)</td>
+                                        <td>~100ms</td>
+                                        <td>3-8min</td>
+                                        <td>100GB free, $55/100GB</td>
+                                        <td>99.9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CloudFlare Pages</td>
+                                        <td>310+ (CloudFlare Network)</td>
+                                        <td>~25ms</td>
+                                        <td>1-3min</td>
+                                        <td>Unlimited free</td>
+                                        <td>99.99%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AWS Amplify</td>
+                                        <td>220+ (AWS CloudFront)</td>
+                                        <td>~75ms</td>
+                                        <td>5-12min</td>
+                                        <td>15GB free, $0.15/GB</td>
+                                        <td>99.95%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Arquitectura Multi-Cloud Enterprise</h3>
+                        <div class="code-block">
+                            <pre><code># Multi-platform deployment strategy
+# .github/workflows/multi-platform-deploy.yml
+
+name: 🌍 Multi-Platform Enterprise Deployment
+on:
+  push:
+    branches: [main]
+  
+env:
+  NODE_VERSION: '20'
+  DEPLOYMENT_REGIONS: 'us-east-1,eu-west-1,ap-southeast-1'
+
+jobs:
+  build-and-test:
+    name: 🔨 Build & Quality Gate
+    runs-on: ubuntu-latest
+    outputs:
+      build-id: ${{ steps.build.outputs.build-id }}
+      lighthouse-score: ${{ steps.lighthouse.outputs.score }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run tests
+        run: npm run test:coverage
+
+      - name: Build optimized
+        id: build
+        run: |
+          npm run build:production
+          echo "build-id=$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+
+      - name: Performance audit
+        id: lighthouse
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun --upload.target=temporary-public-storage
+          echo "score=95" >> $GITHUB_OUTPUT  # Simplified for example
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-${{ steps.build.outputs.build-id }}
+          path: dist/
+
+  deploy-primary:
+    name: 🚀 Deploy Primary (Vercel)
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: needs.build-and-test.outputs.lighthouse-score >= 90
+    
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-${{ needs.build-and-test.outputs.build-id }}
+          path: dist/
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: dist
+
+  deploy-secondary:
+    name: 🌐 Deploy Secondary (Netlify)
+    needs: [build-and-test, deploy-primary]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-${{ needs.build-and-test.outputs.build-id }}
+          path: dist/
+
+      - name: Deploy to Netlify
+        uses: netlify/actions/deploy@master
+        with:
+          publish-dir: dist
+          production-deploy: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+  deploy-edge:
+    name: ⚡ Deploy Edge (CloudFlare)
+    needs: [build-and-test, deploy-primary]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-${{ needs.build-and-test.outputs.build-id }}
+          path: dist/
+
+      - name: Deploy to CloudFlare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'enterprise-website'
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  health-check:
+    name: 🏥 Multi-Platform Health Check
+    needs: [deploy-primary, deploy-secondary, deploy-edge]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check all deployments
+        run: |
+          ENDPOINTS=(
+            "https://tudominio.vercel.app"
+            "https://tudominio.netlify.app" 
+            "https://tudominio.pages.dev"
+          )
+          
+          for endpoint in "${ENDPOINTS[@]}"; do
+            response=$(curl -s -o /dev/null -w "%{http_code},%{time_total}" "$endpoint")
+            status_code=$(echo $response | cut -d',' -f1)
+            response_time=$(echo $response | cut -d',' -f2)
+            
+            if [ "$status_code" != "200" ]; then
+              echo "❌ $endpoint failed with status $status_code"
+              exit 1
+            fi
+            
+            echo "✅ $endpoint - Status: $status_code, Time: ${response_time}s"
+          done</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="edge-computing-avanzado" class="content">
+                        <h2>Edge Computing y Funciones Distribuidas</h2>
+
+                        <h3>Vercel Edge Functions</h3>
+                        <div class="code-block">
+                            <pre><code>// api/edge/personalization.ts
+import { NextRequest, NextResponse } from 'next/server'
+import { geolocation, ipAddress } from '@vercel/edge'
+
+export const config = {
+  runtime: 'edge',
+  regions: ['iad1', 'fra1', 'hnd1'] // Multi-region deployment
+}
+
+interface UserContext {
+  country: string
+  city: string
+  ip: string
+  userAgent: string
+}
+
+export default async function handler(req: NextRequest) {
+  // Obtener contexto del usuario desde el edge
+  const geo = geolocation(req)
+  const ip = ipAddress(req)
+  const userAgent = req.headers.get('user-agent') || ''
+  
+  const userContext: UserContext = {
+    country: geo.country || 'US',
+    city: geo.city || 'Unknown',
+    ip: ip || '0.0.0.0',
+    userAgent
+  }
+
+  // Lógica de personalización basada en ubicación
+  const getLocalizedContent = (context: UserContext) => {
+    const contentMap = {
+      'US': {
+        currency: 'USD',
+        language: 'en',
+        timezone: 'America/New_York',
+        features: ['premium-support', 'advanced-analytics']
+      },
+      'ES': {
+        currency: 'EUR',
+        language: 'es',
+        timezone: 'Europe/Madrid', 
+        features: ['gdpr-compliance', 'local-support']
+      },
+      'JP': {
+        currency: 'JPY',
+        language: 'ja',
+        timezone: 'Asia/Tokyo',
+        features: ['local-payment', 'mobile-optimized']
+      }
+    }
+    
+    return contentMap[context.country] || contentMap['US']
+  }
+
+  // A/B Testing en el edge
+  const getExperimentVariant = (ip: string): 'control' | 'variant-a' | 'variant-b' => {
+    const hash = ip.split('.').reduce((acc, octet) => acc + parseInt(octet), 0)
+    const variant = hash % 3
+    return variant === 0 ? 'control' : variant === 1 ? 'variant-a' : 'variant-b'
+  }
+
+  const localizedContent = getLocalizedContent(userContext)
+  const experimentVariant = getExperimentVariant(userContext.ip)
+
+  // Response con headers optimizados
+  const response = NextResponse.json({
+    user: userContext,
+    content: localizedContent,
+    experiment: experimentVariant,
+    timestamp: new Date().toISOString(),
+    edge_region: process.env.VERCEL_REGION
+  })
+
+  // Cache headers para optimización
+  response.headers.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300')
+  response.headers.set('CDN-Cache-Control', 'max-age=3600')
+  response.headers.set('Vary', 'Accept-Encoding, User-Agent')
+
+  return response
+}</code></pre>
+                        </div>
+
+                        <h3>CloudFlare Workers Avanzado</h3>
+                        <div class="code-block">
+                            <pre><code>// workers/advanced-routing.ts
+interface Env {
+  KV_STORE: KVNamespace
+  ANALYTICS: AnalyticsEngineDataset
+  AI: any // CloudFlare AI binding
+}
+
+export default {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const url = new URL(request.url)
+    const userAgent = request.headers.get('User-Agent') || ''
+    const cf = request.cf as any
+
+    // Detección de bot inteligente
+    const isBot = await detectBot(userAgent, env.AI)
+    
+    // Enrutamiento dinámico basado en performance
+    const routingDecision = await makeRoutingDecision(request, env, cf)
+    
+    // Logging analytics
+    ctx.waitUntil(logAnalytics(request, routingDecision, env.ANALYTICS))
+
+    if (isBot) {
+      return handleBotTraffic(request, env)
+    }
+
+    return handleUserTraffic(request, env, routingDecision)
+  }
+}
+
+async function detectBot(userAgent: string, ai: any): Promise<boolean> {
+  // Usar CloudFlare AI para detección avanzada de bots
+  const botPatterns = [
+    /googlebot/i, /bingbot/i, /slurp/i, /duckduckbot/i,
+    /baiduspider/i, /yandexbot/i, /facebookexternalhit/i
+  ]
+  
+  const isKnownBot = botPatterns.some(pattern => pattern.test(userAgent))
+  
+  if (isKnownBot) return true
+  
+  // AI-powered bot detection para casos edge
+  try {
+    const aiResult = await ai.run('@cf/meta/llama-2-7b-chat-int8', {
+      prompt: `Analyze if this user agent represents a bot or crawler: "${userAgent}". Respond only with "bot" or "human".`
+    })
+    
+    return aiResult.response?.toLowerCase().includes('bot') || false
+  } catch {
+    return false
+  }
+}
+
+async function makeRoutingDecision(
+  request: Request, 
+  env: Env, 
+  cf: any
+): Promise<{ origin: string; reason: string }> {
+  
+  const country = cf.country || 'US'
+  const colo = cf.colo // CloudFlare data center
+  
+  // Performance-based routing
+  const origins = {
+    'vercel': 'https://tudominio.vercel.app',
+    'netlify': 'https://tudominio.netlify.app', 
+    'github': 'https://tudominio.github.io'
+  }
+  
+  // Check origin health from KV cache
+  const healthData = await env.KV_STORE.get('origin-health', { type: 'json' }) as any
+  
+  const healthyOrigins = Object.entries(origins).filter(([key]) => 
+    !healthData || healthData[key]?.status === 'healthy'
+  )
+  
+  if (healthyOrigins.length === 0) {
+    return { origin: origins.github, reason: 'fallback-all-unhealthy' }
+  }
+  
+  // Geographic routing optimization
+  const geoRouting = {
+    'US': 'vercel',    // Better US performance
+    'EU': 'netlify',   // Better EU performance  
+    'AS': 'vercel'     // Better Asia performance
+  }
+  
+  const preferredOrigin = geoRouting[getRegion(country)] || 'vercel'
+  const availableOrigin = healthyOrigins.find(([key]) => key === preferredOrigin)
+  
+  if (availableOrigin) {
+    return { 
+      origin: availableOrigin[1], 
+      reason: `geo-optimized-${country}-${preferredOrigin}` 
+    }
+  }
+  
+  // Fallback to first healthy origin
+  return { 
+    origin: healthyOrigins[0][1], 
+    reason: `fallback-${healthyOrigins[0][0]}` 
+  }
+}
+
+function getRegion(country: string): string {
+  const regions = {
+    'US': ['US', 'CA', 'MX'],
+    'EU': ['GB', 'DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'CH', 'AT'],
+    'AS': ['JP', 'CN', 'KR', 'SG', 'IN', 'AU', 'NZ']
+  }
+  
+  for (const [region, countries] of Object.entries(regions)) {
+    if (countries.includes(country)) return region
+  }
+  
+  return 'US' // Default
+}
+
+async function logAnalytics(
+  request: Request, 
+  routing: { origin: string; reason: string },
+  analytics: AnalyticsEngineDataset
+) {
+  const url = new URL(request.url)
+  
+  analytics.writeDataPoint({
+    blobs: [
+      request.headers.get('User-Agent') || '',
+      url.pathname,
+      routing.origin,
+      routing.reason
+    ],
+    doubles: [
+      Date.now()
+    ],
+    indexes: [
+      url.hostname
+    ]
+  })
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <section id="optimizacion-global" class="content">
+                        <h2>Optimización Global y Monitoreo</h2>
+
+                        <h3>Configuración de CDN Multi-Tier</h3>
+                        <div class="code-block">
+                            <pre><code># terraform/cdn-infrastructure.tf
+# Infraestructura como código para CDN global
+
+resource "cloudflare_zone" "main" {
+  zone = var.domain_name
+  plan = "pro"
+}
+
+resource "cloudflare_zone_settings_override" "main" {
+  zone_id = cloudflare_zone.main.id
+  
+  settings {
+    # Performance optimizations
+    always_online            = "on"
+    brotli                  = "on"
+    cache_level             = "aggressive"
+    development_mode        = "off"
+    early_hints            = "on"
+    http3                  = "on"
+    min_tls_version        = "1.2"
+    ssl                    = "strict"
+    tls_1_3               = "on"
+    zero_rtt              = "on"
+    
+    # Security settings  
+    always_use_https       = "on"
+    automatic_https_rewrites = "on"
+    security_level         = "medium"
+    
+    # Speed optimizations
+    minify {
+      css  = "on"
+      html = "on"
+      js   = "on"
+    }
+  }
+}
+
+# Page Rules para optimización específica
+resource "cloudflare_page_rule" "cache_everything" {
+  zone_id  = cloudflare_zone.main.id
+  target   = "${var.domain_name}/assets/*"
+  priority = 1
+  
+  actions {
+    cache_level         = "cache_everything"
+    edge_cache_ttl     = 31536000  # 1 year
+    browser_cache_ttl  = 31536000  # 1 year
+  }
+}
+
+resource "cloudflare_page_rule" "api_bypass" {
+  zone_id  = cloudflare_zone.main.id
+  target   = "${var.domain_name}/api/*"
+  priority = 2
+  
+  actions {
+    cache_level = "bypass"
+  }
+}
+
+# Workers para routing inteligente
+resource "cloudflare_worker_script" "router" {
+  name    = "intelligent-router"
+  content = file("${path.module}/workers/router.js")
+  
+  kv_namespace_binding {
+    name         = "ORIGINS"
+    namespace_id = cloudflare_workers_kv_namespace.origins.id
+  }
+  
+  analytics_engine_binding {
+    name = "ANALYTICS"
+  }
+}
+
+resource "cloudflare_worker_route" "main" {
+  zone_id     = cloudflare_zone.main.id
+  pattern     = "${var.domain_name}/*"
+  script_name = cloudflare_worker_script.router.name
+}</code></pre>
+                        </div>
+
+                        <h3>Monitoreo Global con Uptime y Performance</h3>
+                        <div class="code-block">
+                            <pre><code>// monitoring/global-health-check.ts
+interface HealthCheckConfig {
+  endpoints: string[]
+  regions: string[]
+  thresholds: {
+    responseTime: number
+    availability: number
+    errorRate: number
+  }
+}
+
+class GlobalHealthMonitor {
+  private config: HealthCheckConfig
+  private metrics: Map<string, any> = new Map()
+  
+  constructor(config: HealthCheckConfig) {
+    this.config = config
+  }
+
+  async runHealthChecks(): Promise<void> {
+    const promises = this.config.endpoints.map(endpoint => 
+      this.checkEndpoint(endpoint)
+    )
+    
+    const results = await Promise.allSettled(promises)
+    await this.processResults(results)
+    await this.triggerAlerts()
+  }
+
+  private async checkEndpoint(endpoint: string) {
+    const regions = ['us-east-1', 'eu-west-1', 'ap-southeast-1']
+    const regionPromises = regions.map(region => 
+      this.checkFromRegion(endpoint, region)
+    )
+    
+    const regionResults = await Promise.allSettled(regionPromises)
+    
+    return {
+      endpoint,
+      regionResults: regionResults.map((result, i) => ({
+        region: regions[i],
+        success: result.status === 'fulfilled',
+        data: result.status === 'fulfilled' ? result.value : null,
+        error: result.status === 'rejected' ? result.reason : null
+      }))
+    }
+  }
+
+  private async checkFromRegion(endpoint: string, region: string) {
+    const startTime = Date.now()
+    
+    try {
+      const response = await fetch(endpoint, {
+        method: 'GET',
+        headers: {
+          'User-Agent': 'HealthMonitor/1.0',
+          'Accept': 'text/html,application/json'
+        },
+        signal: AbortSignal.timeout(10000) // 10s timeout
+      })
+      
+      const endTime = Date.now()
+      const responseTime = endTime - startTime
+      
+      const contentLength = response.headers.get('content-length')
+      const cacheStatus = response.headers.get('cf-cache-status') || 
+                         response.headers.get('x-vercel-cache') ||
+                         response.headers.get('x-nf-request-id') ? 'netlify' : 'unknown'
+      
+      return {
+        status: response.status,
+        responseTime,
+        contentLength: contentLength ? parseInt(contentLength) : 0,
+        cacheStatus,
+        headers: Object.fromEntries(response.headers.entries()),
+        ssl: response.url.startsWith('https://'),
+        region
+      }
+    } catch (error) {
+      throw {
+        region,
+        error: error.message,
+        responseTime: Date.now() - startTime
+      }
+    }
+  }
+
+  private async triggerAlerts() {
+    for (const [endpoint, metrics] of this.metrics) {
+      const availability = this.calculateAvailability(metrics)
+      const avgResponseTime = this.calculateAverageResponseTime(metrics)
+      
+      if (availability < this.config.thresholds.availability) {
+        await this.sendAlert({
+          type: 'availability',
+          endpoint,
+          value: availability,
+          threshold: this.config.thresholds.availability,
+          severity: 'critical'
+        })
+      }
+      
+      if (avgResponseTime > this.config.thresholds.responseTime) {
+        await this.sendAlert({
+          type: 'performance',
+          endpoint, 
+          value: avgResponseTime,
+          threshold: this.config.thresholds.responseTime,
+          severity: 'warning'
+        })
+      }
+    }
+  }
+
+  private async sendAlert(alert: any) {
+    // Integration con Slack, PagerDuty, etc.
+    const webhookUrl = process.env.ALERT_WEBHOOK_URL
+    
+    if (webhookUrl) {
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: `🚨 ${alert.type.toUpperCase()} Alert`,
+          attachments: [{
+            color: alert.severity === 'critical' ? 'danger' : 'warning',
+            fields: [
+              { title: 'Endpoint', value: alert.endpoint, short: true },
+              { title: 'Value', value: alert.value.toString(), short: true },
+              { title: 'Threshold', value: alert.threshold.toString(), short: true }
+            ]
+          }]
+        })
+      })
+    }
+  }
+}
+
+// Configuración del monitor
+const monitor = new GlobalHealthMonitor({
+  endpoints: [
+    'https://tudominio.com',
+    'https://tudominio.vercel.app',
+    'https://tudominio.netlify.app',
+    'https://tudominio.pages.dev'
+  ],
+  regions: ['us-east-1', 'eu-west-1', 'ap-southeast-1'],
+  thresholds: {
+    responseTime: 2000, // 2 seconds
+    availability: 99.5, // 99.5%
+    errorRate: 1.0      // 1%
+  }
+})
+
+// Ejecutar cada 5 minutos
+setInterval(() => monitor.runHealthChecks(), 5 * 60 * 1000)</code></pre>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <strong>🎯 Métricas objetivo multi-platform:</strong>
+                            <ul>
+                                <li><strong>Global TTFB:</strong> < 200ms en 95% de requests</li>
+                                <li><strong>Uptime agregado:</strong> 99.99% (máximo 4.32 min/mes downtime)</li>
+                                <li><strong>Cache Hit Rate:</strong> > 95% en assets estáticos</li>
+                                <li><strong>Edge Response Time:</strong> < 50ms para funciones</li>
+                                <li><strong>Failover Time:</strong> < 30 segundos automático</li>
+                                <li><strong>Global Coverage:</strong> < 100ms latencia en 90% del mundo</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div class="progress-nav">
+                        <ul class="progress-list">
+                            <li class="progress-item"></li>
+                            <li class="progress-item"></li>
+                            <li class="progress-item active"></li>
+                            <li class="progress-item"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nav-container">
+        <div class="container">
+            <p style="text-align: center; padding: 1rem 0;">© 2025 Publica tu Web - Guía para Webmasters Junior</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

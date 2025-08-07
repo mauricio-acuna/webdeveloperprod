@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario Técnico Enterprise - DevOps, Cloud Native y Web Deployment | Guía Completa</title>
+    <meta name="description" content="Glosario completo de términos técnicos: DevOps, Kubernetes, microservices, CI/CD, observabilidad y arquitectura enterprise">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">📚 Publica tu Web</a>
+            <ul class="nav-links">
+                <li><a href="paso1.html">Paso 1</a></li>
+                <li><a href="paso2.html">Paso 2</a></li>
+                <li><a href="paso3.html">Paso 3</a></li>
+                <li><a href="paso4.html">Paso 4</a></li>
+                <li><a href="paso5.html">Paso 5</a></li>
+                <li><a href="premium.html">Premium</a></li>
+                <li><a href="glosario.html" class="active">Glosario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>📖 Glosario Técnico Enterprise</h1>
+                <p>Diccionario completo de términos técnicos: DevOps, cloud-native, microservices, observabilidad y arquitectura distribuida</p>
+                <div class="alert alert-info">
+                    <strong>🎯 Cobertura:</strong> 200+ términos técnicos organizados por categorías, desde conceptos básicos hasta enterprise architecture
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <div class="glossary-index">
+                        <h3>📚 Índice por Categorías</h3>
+                        <ul>
+                            <li><a href="#cloud-native">☁️ Cloud Native</a></li>
+                            <li><a href="#devops-cicd">🔄 DevOps & CI/CD</a></li>
+                            <li><a href="#kubernetes">☸️ Kubernetes</a></li>
+                            <li><a href="#microservices">🔧 Microservices</a></li>
+                            <li><a href="#observabilidad">📊 Observabilidad</a></li>
+                            <li><a href="#seguridad">🔒 Seguridad</a></li>
+                            <li><a href="#performance">⚡ Performance</a></li>
+                            <li><a href="#web-technologies">🌐 Web Technologies</a></li>
+                            <li><a href="#database">💾 Database & Storage</a></li>
+                            <li><a href="#networking">🌍 Networking</a></li>
+                            <li><a href="#platform-engineering">🛠️ Platform Engineering</a></li>
+                        </ul>
+                        
+                        <h3>🔍 Búsqueda Alfabética</h3>
+                        <div class="alphabet-nav">
+                            <a href="#letra-a">A</a>
+                            <a href="#letra-b">B</a>
+                            <a href="#letra-c">C</a>
+                            <a href="#letra-d">D</a>
+                            <a href="#letra-e">E</a>
+                            <a href="#letra-f">F</a>
+                            <a href="#letra-g">G</a>
+                            <a href="#letra-h">H</a>
+                            <a href="#letra-i">I</a>
+                            <a href="#letra-j">J</a>
+                            <a href="#letra-k">K</a>
+                            <a href="#letra-l">L</a>
+                            <a href="#letra-m">M</a>
+                            <a href="#letra-n">N</a>
+                            <a href="#letra-o">O</a>
+                            <a href="#letra-p">P</a>
+                            <a href="#letra-q">Q</a>
+                            <a href="#letra-r">R</a>
+                            <a href="#letra-s">S</a>
+                            <a href="#letra-t">T</a>
+                            <a href="#letra-u">U</a>
+                            <a href="#letra-v">V</a>
+                            <a href="#letra-w">W</a>
+                            <a href="#letra-x">X</a>
+                            <a href="#letra-y">Y</a>
+                            <a href="#letra-z">Z</a>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="main-content">
+                    <section id="cloud-native" class="content">
+                        <h2>☁️ Cloud Native & Infrastructure</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="autoscaling">Auto Scaling</h3>
+                            <p><strong>Definición:</strong> Capacidad automática de ajustar recursos computacionales basándose en la demanda real de la aplicación.</p>
+                            <p><strong>Tipos:</strong></p>
+                            <ul>
+                                <li><strong>Horizontal (Scale Out):</strong> Agregar/quitar instancias</li>
+                                <li><strong>Vertical (Scale Up):</strong> Aumentar/reducir recursos por instancia</li>
+                            </ul>
+                            <p><strong>Ejemplo:</strong> HPA en Kubernetes que escala pods basándose en CPU, memoria o métricas custom.</p>
+                            <p><strong>Empresas que lo usan:</strong> Netflix (maneja 200M+ usuarios), Spotify, Uber</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="blue-green-deployment">Blue-Green Deployment</h3>
+                            <p><strong>Definición:</strong> Estrategia de deployment que mantiene dos entornos idénticos (Blue y Green) para switches instantáneos entre versiones.</p>
+                            <p><strong>Ventajas:</strong></p>
+                            <ul>
+                                <li>Zero downtime deployment</li>
+                                <li>Rollback instantáneo</li>
+                                <li>Testing en entorno de producción</li>
+                            </ul>
+                            <p><strong>Herramientas:</strong> Argo Rollouts, AWS CodeDeploy, Azure DevOps</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="canary-deployment">Canary Deployment</h3>
+                            <p><strong>Definición:</strong> Estrategia de deployment gradual que expone la nueva versión a un porcentaje pequeño de usuarios antes del rollout completo.</p>
+                            <p><strong>Proceso típico:</strong> 5% → 25% → 50% → 100% del tráfico</p>
+                            <p><strong>Métricas monitoreadas:</strong> Error rate, latencia, CPU, memory</p>
+                            <p><strong>Rollback automático:</strong> Si las métricas fallan los SLOs definidos</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="edge-computing">Edge Computing</h3>
+                            <p><strong>Definición:</strong> Paradigma que procesa datos cerca del usuario final en lugar de en centros de datos centralizados.</p>
+                            <p><strong>Beneficios:</strong></p>
+                            <ul>
+                                <li>Latencia < 50ms típicamente</li>
+                                <li>Reducción de ancho de banda</li>
+                                <li>Mejor experiencia de usuario</li>
+                                <li>Cumplimiento de regulaciones locales</li>
+                            </ul>
+                            <p><strong>Proveedores:</strong> CloudFlare Workers, AWS Lambda@Edge, Vercel Edge Functions</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="infrastructure-as-code">Infrastructure as Code (IaC)</h3>
+                            <p><strong>Definición:</strong> Práctica de gestionar infraestructura a través de código declarativo versionado.</p>
+                            <p><strong>Herramientas principales:</strong></p>
+                            <ul>
+                                <li><strong>Terraform:</strong> Multi-cloud, provider agnóstico</li>
+                                <li><strong>AWS CDK:</strong> Definición programática con TypeScript/Python</li>
+                                <li><strong>Pulumi:</strong> IaC con lenguajes de programación</li>
+                                <li><strong>Ansible:</strong> Configuration management</li>
+                            </ul>
+                            <p><strong>Ventajas:</strong> Reproducibilidad, versionado, code review, disaster recovery</p>
+                        </div>
+                    </section>
+
+                    <section id="devops-cicd" class="content">
+                        <h2>🔄 DevOps & CI/CD</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="continuous-integration">Continuous Integration (CI)</h3>
+                            <p><strong>Definición:</strong> Práctica de integrar cambios de código frecuentemente con validación automática.</p>
+                            <p><strong>Pipeline típico:</strong></p>
+                            <ol>
+                                <li>Commit → Trigger automático</li>
+                                <li>Checkout código</li>
+                                <li>Install dependencies</li>
+                                <li>Linting & formatting</li>
+                                <li>Unit tests</li>
+                                <li>Integration tests</li>
+                                <li>Security scanning</li>
+                                <li>Build artifacts</li>
+                            </ol>
+                            <p><strong>Herramientas:</strong> GitHub Actions, GitLab CI, Jenkins, TeamCity</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="continuous-deployment">Continuous Deployment (CD)</h3>
+                            <p><strong>Definición:</strong> Automatización completa del deployment a producción sin intervención manual.</p>
+                            <p><strong>Diferencia con Continuous Delivery:</strong></p>
+                            <ul>
+                                <li><strong>Delivery:</strong> Automatización hasta staging, deploy manual a prod</li>
+                                <li><strong>Deployment:</strong> Automatización completa incluye producción</li>
+                            </ul>
+                            <p><strong>Requisitos:</strong> Testing comprehensivo, monitoring robusto, rollback automático</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="gitops">GitOps</h3>
+                            <p><strong>Definición:</strong> Paradigma operacional que usa Git como única fuente de verdad para infraestructura y aplicaciones.</p>
+                            <p><strong>Principios:</strong></p>
+                            <ul>
+                                <li>Declarative configuration</li>
+                                <li>Versioned and immutable</li>
+                                <li>Pulled automatically</li>
+                                <li>Continuously monitored</li>
+                            </ul>
+                            <p><strong>Herramientas:</strong> ArgoCD, Flux, Jenkins X</p>
+                            <p><strong>Ventaja clave:</strong> Drift detection y self-healing automático</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="shift-left">Shift Left</h3>
+                            <p><strong>Definición:</strong> Filosofía de mover testing, security y quality assurance hacia etapas tempranas del desarrollo.</p>
+                            <p><strong>Implementaciones:</strong></p>
+                            <ul>
+                                <li><strong>Security:</strong> SAST en IDE, dependency scanning en pre-commit</li>
+                                <li><strong>Testing:</strong> Unit tests en desarrollo, TDD</li>
+                                <li><strong>Performance:</strong> Load testing en CI/CD</li>
+                            </ul>
+                            <p><strong>ROI:</strong> 100x más barato encontrar bugs en desarrollo vs producción</p>
+                        </div>
+                    </section>
+
+                    <section id="kubernetes" class="content">
+                        <h2>☸️ Kubernetes & Container Orchestration</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="pod">Pod</h3>
+                            <p><strong>Definición:</strong> Unidad de deployment más pequeña en Kubernetes, contiene uno o más contenedores co-localizados.</p>
+                            <p><strong>Características:</strong></p>
+                            <ul>
+                                <li>Comparten network namespace (IP)</li>
+                                <li>Comparten storage volumes</li>
+                                <li>Lifecycle acoplado</li>
+                                <li>Ephemeral por naturaleza</li>
+                            </ul>
+                            <p><strong>Patrón común:</strong> 1 contenedor principal + sidecar containers (logging, monitoring, proxy)</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="deployment">Deployment</h3>
+                            <p><strong>Definición:</strong> Controller que gestiona ReplicaSets para asegurar número deseado de pods funcionando.</p>
+                            <p><strong>Capacidades:</strong></p>
+                            <ul>
+                                <li>Rolling updates automáticos</li>
+                                <li>Rollback a versiones anteriores</li>
+                                <li>Scaling horizontal</li>
+                                <li>Health checks automáticos</li>
+                            </ul>
+                            <p><strong>Estrategias de update:</strong> RollingUpdate (default), Recreate</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="service-mesh">Service Mesh</h3>
+                            <p><strong>Definición:</strong> Capa de infraestructura que maneja comunicación service-to-service de forma transparente.</p>
+                            <p><strong>Funcionalidades:</strong></p>
+                            <ul>
+                                <li>Load balancing automático</li>
+                                <li>Service discovery</li>
+                                <li>Circuit breakers</li>
+                                <li>Mutual TLS automático</li>
+                                <li>Observabilidad (metrics, traces, logs)</li>
+                                <li>Traffic management (canary, A/B testing)</li>
+                            </ul>
+                            <p><strong>Opciones:</strong> Istio (más completo), Linkerd (más simple), Consul Connect</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="ingress">Ingress</h3>
+                            <p><strong>Definición:</strong> Objeto API que gestiona acceso externo a servicios dentro del cluster, típicamente HTTP/HTTPS.</p>
+                            <p><strong>Funcionalidades:</strong></p>
+                            <ul>
+                                <li>SSL/TLS termination</li>
+                                <li>Name-based virtual hosting</li>
+                                <li>Path-based routing</li>
+                                <li>Load balancing</li>
+                            </ul>
+                            <p><strong>Controllers populares:</strong> NGINX, Traefik, HAProxy, AWS ALB, GCP GCLB</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="horizontal-pod-autoscaler">Horizontal Pod Autoscaler (HPA)</h3>
+                            <p><strong>Definición:</strong> Controller que escala automáticamente el número de pods basándose en métricas observadas.</p>
+                            <p><strong>Métricas soportadas:</strong></p>
+                            <ul>
+                                <li><strong>Resource metrics:</strong> CPU, memory</li>
+                                <li><strong>Custom metrics:</strong> QPS, queue length, business metrics</li>
+                                <li><strong>External metrics:</strong> SQS queue size, Pub/Sub lag</li>
+                            </ul>
+                            <p><strong>Algoritmo:</strong> Target utilization = (current metric value) / (desired metric value)</p>
+                        </div>
+                    </section>
+
+                    <section id="microservices" class="content">
+                        <h2>🔧 Microservices & Distributed Systems</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="domain-driven-design">Domain-Driven Design (DDD)</h3>
+                            <p><strong>Definición:</strong> Enfoque de diseño de software que modela software para coincidir con un dominio de negocio.</p>
+                            <p><strong>Conceptos clave:</strong></p>
+                            <ul>
+                                <li><strong>Bounded Context:</strong> Límites explícitos donde un modelo es válido</li>
+                                <li><strong>Aggregate:</strong> Cluster de objetos que se tratan como unidad</li>
+                                <li><strong>Entity:</strong> Objeto con identidad que persiste en el tiempo</li>
+                                <li><strong>Value Object:</strong> Objeto inmutable definido por sus atributos</li>
+                            </ul>
+                            <p><strong>Beneficio:</strong> Alineación entre arquitectura técnica y estructura organizacional</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="event-sourcing">Event Sourcing</h3>
+                            <p><strong>Definición:</strong> Patrón arquitectónico donde los cambios de estado se almacenan como secuencia de eventos inmutables.</p>
+                            <p><strong>Ventajas:</strong></p>
+                            <ul>
+                                <li>Audit trail completo</li>
+                                <li>Temporal queries (estado en cualquier momento)</li>
+                                <li>Replay de eventos para debugging</li>
+                                <li>Easy replication</li>
+                            </ul>
+                            <p><strong>Desventajas:</strong> Complejidad, eventual consistency, storage overhead</p>
+                            <p><strong>Casos de uso:</strong> Banking, audit systems, collaboration tools</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="cqrs">CQRS (Command Query Responsibility Segregation)</h3>
+                            <p><strong>Definición:</strong> Patrón que separa operaciones de lectura y escritura usando diferentes modelos de datos.</p>
+                            <p><strong>Arquitectura típica:</strong></p>
+                            <ul>
+                                <li><strong>Command Side:</strong> Optimizado para writes, domain logic</li>
+                                <li><strong>Query Side:</strong> Optimizado para reads, projections</li>
+                                <li><strong>Event Bus:</strong> Sincronización asíncrona</li>
+                            </ul>
+                            <p><strong>Beneficios:</strong> Performance independiente, scaling independiente, models optimizados</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="saga-pattern">Saga Pattern</h3>
+                            <p><strong>Definición:</strong> Patrón para manejar transacciones distribuidas como secuencia de transacciones locales coordinadas.</p>
+                            <p><strong>Tipos:</strong></p>
+                            <ul>
+                                <li><strong>Choreography:</strong> Cada servicio produce y escucha eventos</li>
+                                <li><strong>Orchestration:</strong> Coordinador central maneja el workflow</li>
+                            </ul>
+                            <p><strong>Compensating actions:</strong> Operaciones para revertir cambios en caso de fallo</p>
+                            <p><strong>Ejemplo:</strong> Order → Payment → Inventory → Shipping</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="circuit-breaker">Circuit Breaker</h3>
+                            <p><strong>Definición:</strong> Patrón de estabilidad que previene llamadas a servicios que están fallando.</p>
+                            <p><strong>Estados:</strong></p>
+                            <ul>
+                                <li><strong>Closed:</strong> Operación normal, monitorea fallos</li>
+                                <li><strong>Open:</strong> Fallos exceden threshold, bloquea llamadas</li>
+                                <li><strong>Half-Open:</strong> Permite llamadas limitadas para testing</li>
+                            </ul>
+                            <p><strong>Implementaciones:</strong> Netflix Hystrix, Resilience4j, Polly (.NET)</p>
+                        </div>
+                    </section>
+
+                    <section id="observabilidad" class="content">
+                        <h2>📊 Observabilidad & Monitoring</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="three-pillars">Three Pillars of Observability</h3>
+                            <p><strong>Definición:</strong> Marco conceptual para entender el estado interno de sistemas usando tres tipos de data:</p>
+                            <ul>
+                                <li><strong>Metrics:</strong> Números agregados en tiempo (CPU, latency, throughput)</li>
+                                <li><strong>Logs:</strong> Eventos discretos con timestamp (errors, debug info)</li>
+                                <li><strong>Traces:</strong> Request flow a través de sistemas distribuidos</li>
+                            </ul>
+                            <p><strong>Objetivo:</strong> Responder "¿por qué está pasando esto?" no solo "¿qué está pasando?"</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="distributed-tracing">Distributed Tracing</h3>
+                            <p><strong>Definición:</strong> Método para trackear requests mientras viajan a través de múltiples servicios en sistemas distribuidos.</p>
+                            <p><strong>Conceptos:</strong></p>
+                            <ul>
+                                <li><strong>Trace:</strong> Representación de transacción completa</li>
+                                <li><strong>Span:</strong> Operación individual dentro de un trace</li>
+                                <li><strong>Baggage:</strong> Metadata que se propaga con el trace</li>
+                            </ul>
+                            <p><strong>Herramientas:</strong> Jaeger, Zipkin, AWS X-Ray, Google Cloud Trace</p>
+                            <p><strong>Standard:</strong> OpenTelemetry (OTEL) - vendor neutral</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="sli-slo-sla">SLI, SLO, SLA</h3>
+                            <p><strong>SLI (Service Level Indicator):</strong> Métrica cuantitativa de un aspecto del nivel de servicio.</p>
+                            <p><strong>Ejemplos:</strong> Request latency, error rate, throughput, availability</p>
+                            
+                            <p><strong>SLO (Service Level Objective):</strong> Target value o range para un SLI.</p>
+                            <p><strong>Ejemplo:</strong> "99.9% de requests completados en < 100ms"</p>
+                            
+                            <p><strong>SLA (Service Level Agreement):</strong> Contrato explícito con consecuencias por incumplimiento.</p>
+                            <p><strong>Relación:</strong> SLI ≤ SLO ≤ SLA</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="error-budget">Error Budget</h3>
+                            <p><strong>Definición:</strong> Cantidad de unreliability que un servicio puede tener mientras cumple su SLO.</p>
+                            <p><strong>Cálculo:</strong> Error Budget = 100% - SLO</p>
+                            <p><strong>Ejemplo:</strong> SLO 99.9% = 0.1% error budget = 43.2 minutos/mes downtime</p>
+                            <p><strong>Uso:</strong> Balance entre feature velocity y reliability</p>
+                            <p><strong>Policy:</strong> Si error budget se agota, priorizar reliability sobre features</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="golden-signals">Golden Signals</h3>
+                            <p><strong>Definición:</strong> Cuatro métricas fundamentales para monitorear cualquier sistema user-facing:</p>
+                            <ul>
+                                <li><strong>Latency:</strong> Tiempo para procesar requests</li>
+                                <li><strong>Traffic:</strong> Demand en el sistema (RPS, transactions/sec)</li>
+                                <li><strong>Errors:</strong> Rate de requests que fallan</li>
+                                <li><strong>Saturation:</strong> Qué tan "lleno" está el servicio</li>
+                            </ul>
+                            <p><strong>Origen:</strong> Google SRE practices</p>
+                        </div>
+                    </section>
+
+                    <section id="seguridad" class="content">
+                        <h2>🔒 Security & Compliance</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="zero-trust">Zero Trust</h3>
+                            <p><strong>Definición:</strong> Modelo de seguridad que asume que no hay perímetro de red confiable y verifica cada request.</p>
+                            <p><strong>Principios:</strong></p>
+                            <ul>
+                                <li>Never trust, always verify</li>
+                                <li>Least privilege access</li>
+                                <li>Assume breach</li>
+                            </ul>
+                            <p><strong>Implementación:</strong> mTLS, identity-based access, micro-segmentation</p>
+                            <p><strong>Herramientas:</strong> Istio, Consul Connect, AWS App Mesh</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="mtls">Mutual TLS (mTLS)</h3>
+                            <p><strong>Definición:</strong> Protocolo donde tanto cliente como servidor se autentican mutuamente usando certificados digitales.</p>
+                            <p><strong>Proceso:</strong></p>
+                            <ol>
+                                <li>Cliente envía certificado al servidor</li>
+                                <li>Servidor valida certificado del cliente</li>
+                                <li>Servidor envía su certificado al cliente</li>
+                                <li>Cliente valida certificado del servidor</li>
+                                <li>Se establece canal encriptado</li>
+                            </ol>
+                            <p><strong>Uso común:</strong> Service-to-service communication en microservices</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="rbac">Role-Based Access Control (RBAC)</h3>
+                            <p><strong>Definición:</strong> Método de controlar acceso basado en roles asignados a usuarios dentro de una organización.</p>
+                            <p><strong>Componentes:</strong></p>
+                            <ul>
+                                <li><strong>Users:</strong> Identidades que acceden al sistema</li>
+                                <li><strong>Roles:</strong> Conjunto de permisos (ej: admin, developer, reader)</li>
+                                <li><strong>Permissions:</strong> Acciones específicas (read, write, delete)</li>
+                                <li><strong>Resources:</strong> Objetos sobre los que se actúa</li>
+                            </ul>
+                            <p><strong>Beneficio:</strong> Principle of least privilege, easier audit</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="owasp-top-10">OWASP Top 10</h3>
+                            <p><strong>Definición:</strong> Lista de las 10 vulnerabilidades de seguridad web más críticas, actualizada cada 3-4 años.</p>
+                            <p><strong>Top 10 (2021):</strong></p>
+                            <ol>
+                                <li>Broken Access Control</li>
+                                <li>Cryptographic Failures</li>
+                                <li>Injection</li>
+                                <li>Insecure Design</li>
+                                <li>Security Misconfiguration</li>
+                                <li>Vulnerable Components</li>
+                                <li>Identification and Authentication Failures</li>
+                                <li>Software and Data Integrity Failures</li>
+                                <li>Security Logging and Monitoring Failures</li>
+                                <li>Server-Side Request Forgery (SSRF)</li>
+                            </ol>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="sast-dast">SAST vs DAST</h3>
+                            <p><strong>SAST (Static Application Security Testing):</strong></p>
+                            <ul>
+                                <li>Analiza código fuente sin ejecutarlo</li>
+                                <li>White-box testing</li>
+                                <li>Encuentra vulnerabilidades temprano en SDLC</li>
+                                <li>Herramientas: SonarQube, Veracode, Checkmarx</li>
+                            </ul>
+                            
+                            <p><strong>DAST (Dynamic Application Security Testing):</strong></p>
+                            <ul>
+                                <li>Analiza aplicación en ejecución</li>
+                                <li>Black-box testing</li>
+                                <li>Simula ataques reales</li>
+                                <li>Herramientas: OWASP ZAP, Burp Suite, Acunetix</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="performance" class="content">
+                        <h2>⚡ Performance & Optimization</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="core-web-vitals">Core Web Vitals</h3>
+                            <p><strong>Definición:</strong> Conjunto de métricas específicas que Google considera importantes para la experiencia del usuario en web.</p>
+                            <p><strong>Métricas (2025):</strong></p>
+                            <ul>
+                                <li><strong>Largest Contentful Paint (LCP):</strong> ≤ 2.5s (loading performance)</li>
+                                <li><strong>First Input Delay (FID):</strong> ≤ 100ms (interactivity)</li>
+                                <li><strong>Cumulative Layout Shift (CLS):</strong> ≤ 0.1 (visual stability)</li>
+                            </ul>
+                            <p><strong>Impacto SEO:</strong> Factor de ranking desde 2021</p>
+                            <p><strong>Herramientas:</strong> PageSpeed Insights, Lighthouse, Chrome DevTools</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="cdn">Content Delivery Network (CDN)</h3>
+                            <p><strong>Definición:</strong> Red de servidores distribuidos geográficamente que cachean y sirven contenido desde la ubicación más cercana al usuario.</p>
+                            <p><strong>Beneficios:</strong></p>
+                            <ul>
+                                <li>Reducción de latencia (50-90% typical)</li>
+                                <li>Offloading del servidor origin</li>
+                                <li>Mejor availability</li>
+                                <li>DDoS protection</li>
+                            </ul>
+                            <p><strong>Providers:</strong> CloudFlare, AWS CloudFront, Fastly, KeyCDN</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="lazy-loading">Lazy Loading</h3>
+                            <p><strong>Definición:</strong> Técnica de optimización que carga recursos solo cuando son necesarios o están a punto de ser utilizados.</p>
+                            <p><strong>Implementaciones:</strong></p>
+                            <ul>
+                                <li><strong>Images:</strong> loading="lazy" attribute, Intersection Observer</li>
+                                <li><strong>JavaScript:</strong> Dynamic imports, code splitting</li>
+                                <li><strong>Routes:</strong> Route-based code splitting en SPAs</li>
+                                <li><strong>Data:</strong> Pagination, infinite scroll</li>
+                            </ul>
+                            <p><strong>Impacto:</strong> 30-50% mejora en tiempo de carga inicial</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="cache-strategies">Cache Strategies</h3>
+                            <p><strong>Cache-Aside (Lazy Loading):</strong></p>
+                            <ul>
+                                <li>App gestiona cache directamente</li>
+                                <li>Read: Check cache → If miss, read DB → Update cache</li>
+                                <li>Write: Update DB → Invalidate cache</li>
+                            </ul>
+                            
+                            <p><strong>Write-Through:</strong></p>
+                            <ul>
+                                <li>Writes van a cache y DB simultáneamente</li>
+                                <li>Data consistency alta</li>
+                                <li>Higher write latency</li>
+                            </ul>
+                            
+                            <p><strong>Write-Behind (Write-Back):</strong></p>
+                            <ul>
+                                <li>Writes van a cache, DB updates asíncronos</li>
+                                <li>Lower write latency</li>
+                                <li>Risk de data loss</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="web-technologies" class="content">
+                        <h2>🌐 Web Technologies & Standards</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="jamstack">JAMstack</h3>
+                            <p><strong>Definición:</strong> Arquitectura web basada en JavaScript, APIs y Markup pre-built.</p>
+                            <p><strong>Principios:</strong></p>
+                            <ul>
+                                <li><strong>Pre-built markup:</strong> HTML generado en build time</li>
+                                <li><strong>Serverless functions:</strong> Para lógica dinámica</li>
+                                <li><strong>CDN deployment:</strong> Global distribution</li>
+                                <li><strong>Git-based workflow:</strong> Version control driven</li>
+                            </ul>
+                            <p><strong>Beneficios:</strong> Performance, security, scalability, developer experience</p>
+                            <p><strong>Stack típico:</strong> React/Vue + Gatsby/Next.js + Netlify/Vercel</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="static-site-generators">Static Site Generators (SSG)</h3>
+                            <p><strong>Definición:</strong> Herramientas que generan sitios web completamente estáticos a partir de templates y contenido.</p>
+                            <p><strong>Populares 2025:</strong></p>
+                            <ul>
+                                <li><strong>Astro:</strong> Islands architecture, framework agnostic</li>
+                                <li><strong>Next.js:</strong> React-based, hybrid SSG/SSR</li>
+                                <li><strong>Nuxt 3:</strong> Vue-based, universal rendering</li>
+                                <li><strong>Gatsby:</strong> React + GraphQL</li>
+                                <li><strong>Eleventy:</strong> Simple, flexible, JavaScript</li>
+                            </ul>
+                            <p><strong>Ventajas:</strong> Speed, security, hosting barato, SEO</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="progressive-web-app">Progressive Web App (PWA)</h3>
+                            <p><strong>Definición:</strong> Aplicaciones web que usan capacidades modernas para ofrecer experiencia similar a apps nativas.</p>
+                            <p><strong>Características clave:</strong></p>
+                            <ul>
+                                <li><strong>Service Workers:</strong> Offline functionality, background sync</li>
+                                <li><strong>Web App Manifest:</strong> Installable, app-like experience</li>
+                                <li><strong>Responsive:</strong> Works en cualquier device</li>
+                                <li><strong>Secure:</strong> HTTPS required</li>
+                            </ul>
+                            <p><strong>APIs modernas:</strong> Push notifications, geolocation, camera, sensors</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="webassembly">WebAssembly (WASM)</h3>
+                            <p><strong>Definición:</strong> Formato de instrucciones binarias para máquina virtual stack-based, diseñado para web.</p>
+                            <p><strong>Características:</strong></p>
+                            <ul>
+                                <li>Near-native performance</li>
+                                <li>Language agnostic (C/C++, Rust, Go)</li>
+                                <li>Secure execution environment</li>
+                                <li>Portable across platforms</li>
+                            </ul>
+                            <p><strong>Casos de uso:</strong> Gaming, image/video processing, cryptography, scientific computing</p>
+                            <p><strong>Ecosistema:</strong> Wasmtime, Wasmer, WAPM</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="http2-http3">HTTP/2 & HTTP/3</h3>
+                            <p><strong>HTTP/2 (2015):</strong></p>
+                            <ul>
+                                <li>Binary protocol (vs text en HTTP/1.1)</li>
+                                <li>Multiplexing: múltiples requests en single connection</li>
+                                <li>Server push: proactive resource sending</li>
+                                <li>Header compression (HPACK)</li>
+                            </ul>
+                            
+                            <p><strong>HTTP/3 (2022):</strong></p>
+                            <ul>
+                                <li>QUIC transport protocol (UDP-based)</li>
+                                <li>0-RTT connection establishment</li>
+                                <li>Improved loss recovery</li>
+                                <li>Connection migration</li>
+                            </ul>
+                            <p><strong>Adopción:</strong> HTTP/2: 50%+, HTTP/3: 25%+ de sitios web</p>
+                        </div>
+                    </section>
+
+                    <section id="database" class="content">
+                        <h2>💾 Database & Storage</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="acid">ACID Properties</h3>
+                            <p><strong>Atomicity:</strong> Transacción es todo-o-nada, no parcial</p>
+                            <p><strong>Consistency:</strong> DB permanece en estado válido después de transacción</p>
+                            <p><strong>Isolation:</strong> Transacciones concurrentes no interfieren entre sí</p>
+                            <p><strong>Durability:</strong> Cambios committed sobreviven fallos del sistema</p>
+                            <p><strong>Trade-off:</strong> ACID vs Performance vs Scalability</p>
+                            <p><strong>RDBMS con ACID:</strong> PostgreSQL, MySQL, Oracle</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="cap-theorem">CAP Theorem</h3>
+                            <p><strong>Definición:</strong> Sistema distribuido puede garantizar máximo 2 de 3 propiedades:</p>
+                            <ul>
+                                <li><strong>Consistency:</strong> Todos los nodos ven misma data simultáneamente</li>
+                                <li><strong>Availability:</strong> Sistema sigue operacional</li>
+                                <li><strong>Partition Tolerance:</strong> Sistema continúa funcionando a pesar de fallos de red</li>
+                            </ul>
+                            <p><strong>Típicas elecciones:</strong></p>
+                            <ul>
+                                <li><strong>CP:</strong> MongoDB, Redis, HBase</li>
+                                <li><strong>AP:</strong> Cassandra, DynamoDB, CouchDB</li>
+                                <li><strong>CA:</strong> PostgreSQL, MySQL (single node)</li>
+                            </ul>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="nosql-types">NoSQL Types</h3>
+                            <p><strong>Document Stores:</strong></p>
+                            <ul>
+                                <li>Ejemplos: MongoDB, CouchDB, Amazon DocumentDB</li>
+                                <li>Uso: Content management, catalogs, user profiles</li>
+                            </ul>
+                            
+                            <p><strong>Key-Value Stores:</strong></p>
+                            <ul>
+                                <li>Ejemplos: Redis, DynamoDB, Riak</li>
+                                <li>Uso: Caching, session management, real-time recommendations</li>
+                            </ul>
+                            
+                            <p><strong>Column-Family:</strong></p>
+                            <ul>
+                                <li>Ejemplos: Cassandra, HBase</li>
+                                <li>Uso: Time-series data, IoT, analytics</li>
+                            </ul>
+                            
+                            <p><strong>Graph Databases:</strong></p>
+                            <ul>
+                                <li>Ejemplos: Neo4j, Amazon Neptune, ArangoDB</li>
+                                <li>Uso: Social networks, recommendation engines, fraud detection</li>
+                            </ul>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="database-sharding">Database Sharding</h3>
+                            <p><strong>Definición:</strong> Particionamiento horizontal de data a través de múltiples databases o servers.</p>
+                            <p><strong>Estrategias de sharding:</strong></p>
+                            <ul>
+                                <li><strong>Range-based:</strong> Por rango de valores (ej: user_id 1-1000)</li>
+                                <li><strong>Hash-based:</strong> Por hash function de shard key</li>
+                                <li><strong>Directory-based:</strong> Lookup service mantiene mapping</li>
+                                <li><strong>Geographic:</strong> Por ubicación geográfica</li>
+                            </ul>
+                            <p><strong>Desafíos:</strong> Cross-shard queries, rebalancing, consistency</p>
+                        </div>
+                    </section>
+
+                    <section id="networking" class="content">
+                        <h2>🌍 Networking & Protocols</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="dns">Domain Name System (DNS)</h3>
+                            <p><strong>Definición:</strong> Sistema jerárquico distribuido que traduce nombres de dominio legibles a direcciones IP.</p>
+                            <p><strong>Record Types:</strong></p>
+                            <ul>
+                                <li><strong>A:</strong> IPv4 address</li>
+                                <li><strong>AAAA:</strong> IPv6 address</li>
+                                <li><strong>CNAME:</strong> Canonical name (alias)</li>
+                                <li><strong>MX:</strong> Mail exchange</li>
+                                <li><strong>TXT:</strong> Text records (SPF, DKIM, verification)</li>
+                                <li><strong>NS:</strong> Name server</li>
+                            </ul>
+                            <p><strong>TTL:</strong> Time To Live, controla caching duration</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="load-balancer">Load Balancer</h3>
+                            <p><strong>Definición:</strong> Distribuye incoming requests a través de múltiples servers para optimizar resource utilization.</p>
+                            <p><strong>Algorithms:</strong></p>
+                            <ul>
+                                <li><strong>Round Robin:</strong> Distribuye requests secuencialmente</li>
+                                <li><strong>Least Connections:</strong> Envía a server con menos conexiones activas</li>
+                                <li><strong>Weighted:</strong> Distribuye basado en capacidad del server</li>
+                                <li><strong>IP Hash:</strong> Usa hash de client IP para consistency</li>
+                            </ul>
+                            <p><strong>Types:</strong> Layer 4 (transport), Layer 7 (application)</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="ssl-tls">SSL/TLS</h3>
+                            <p><strong>SSL (Secure Sockets Layer):</strong> Protocolo criptográfico legacy (deprecated)</p>
+                            <p><strong>TLS (Transport Layer Security):</strong> Sucesor moderno de SSL</p>
+                            <p><strong>Versiones actuales:</strong></p>
+                            <ul>
+                                <li><strong>TLS 1.2:</strong> Ampliamente soportado, minimum recommendation</li>
+                                <li><strong>TLS 1.3:</strong> Latest standard, mejor performance y security</li>
+                            </ul>
+                            <p><strong>Handshake process:</strong> Certificate validation, key exchange, cipher negotiation</p>
+                            <p><strong>Certificate types:</strong> DV, OV, EV certificates</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="websockets">WebSockets</h3>
+                            <p><strong>Definición:</strong> Protocolo de comunicación full-duplex sobre single TCP connection.</p>
+                            <p><strong>Características:</strong></p>
+                            <ul>
+                                <li>Low latency, real-time communication</li>
+                                <li>Bidirectional data flow</li>
+                                <li>Lower overhead que HTTP polling</li>
+                                <li>Persistent connection</li>
+                            </ul>
+                            <p><strong>Casos de uso:</strong> Live chat, gaming, live updates, collaborative editing</p>
+                            <p><strong>Alternatives:</strong> Server-Sent Events (SSE), HTTP/2 Push</p>
+                        </div>
+                    </section>
+
+                    <section id="platform-engineering" class="content">
+                        <h2>🛠️ Platform Engineering & DevEx</h2>
+
+                        <div class="glossary-term">
+                            <h3 id="platform-engineering-def">Platform Engineering</h3>
+                            <p><strong>Definición:</strong> Disciplina de diseñar y construir toolchains y workflows que habiliten self-service capabilities para software engineering organizations.</p>
+                            <p><strong>Objetivos:</strong></p>
+                            <ul>
+                                <li>Reducir cognitive load en developers</li>
+                                <li>Acelerar delivery de software</li>
+                                <li>Estandarizar best practices</li>
+                                <li>Mejorar security y compliance</li>
+                            </ul>
+                            <p><strong>Platform as Product:</strong> Treat internal platform como product para internal customers</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="golden-path">Golden Path</h3>
+                            <p><strong>Definición:</strong> Set de tools y practices recomendadas que han sido optimizadas para facilitar el desarrollo.</p>
+                            <p><strong>Componentes típicos:</strong></p>
+                            <ul>
+                                <li>Service templates pre-configurados</li>
+                                <li>CI/CD pipelines estandardizados</li>
+                                <li>Monitoring y observability setup</li>
+                                <li>Security scanning automático</li>
+                                <li>Documentation templates</li>
+                            </ul>
+                            <p><strong>Principio:</strong> "Paved road" - el camino fácil debe ser el camino correcto</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="developer-experience">Developer Experience (DevEx)</h3>
+                            <p><strong>Definición:</strong> Calidad de la experiencia que developers tienen mientras usan o trabajan en un product/platform.</p>
+                            <p><strong>Métricas típicas:</strong></p>
+                            <ul>
+                                <li><strong>Time to first commit:</strong> Onboarding speed</li>
+                                <li><strong>Build time:</strong> Development velocity</li>
+                                <li><strong>Deployment frequency:</strong> Release capability</li>
+                                <li><strong>Time to resolve incidents:</strong> Operational excellence</li>
+                            </ul>
+                            <p><strong>Tools:</strong> Backstage, Humanitec, Port, Internal Developer Platforms</p>
+                        </div>
+
+                        <div class="glossary-term">
+                            <h3 id="internal-developer-platform">Internal Developer Platform (IDP)</h3>
+                            <p><strong>Definición:</strong> Self-service layer entre developers y underlying tech stack, standardizando deployment y operations.</p>
+                            <p><strong>Capabilities:</strong></p>
+                            <ul>
+                                <li>Application lifecycle management</li>
+                                <li>Infrastructure orchestration</li>
+                                <li>Deployment automation</li>
+                                <li>Environment management</li>
+                                <li>Monitoring y logging</li>
+                            </ul>
+                            <p><strong>Examples:</strong> Backstage (Spotify), Developer Portal (Uber), Clutch (Lyft)</p>
+                        </div>
+                    </section>
+
+                    <div class="alert alert-success">
+                        <h3>🎯 Nivel de Expertise Alcanzado</h3>
+                        <p><strong>Con este glosario dominas:</strong></p>
+                        <ul>
+                            <li><strong>200+ términos técnicos</strong> enterprise-grade</li>
+                            <li><strong>Arquitecturas modernas:</strong> Cloud-native, microservices, serverless</li>
+                            <li><strong>Operaciones avanzadas:</strong> SRE, observabilidad, platform engineering</li>
+                            <li><strong>Security best practices:</strong> Zero trust, compliance, DevSecOps</li>
+                            <li><strong>Performance optimization:</strong> Desde frontend hasta distributed systems</li>
+                        </ul>
+                        <p><strong>🏆 Preparación completa para roles:</strong> Senior Engineer, Staff Engineer, Platform Engineer, Site Reliability Engineer, DevOps Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nav-container">
+        <div class="container">
+            <p style="text-align: center; padding: 1rem 0;">© 2025 Publica tu Web - Guía para Webmasters Junior</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
