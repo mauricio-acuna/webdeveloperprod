@@ -1,0 +1,48 @@
+# Configuración para GitHub Pages
+title: "Web Developer Pro - Guía Completa de Despliegue"
+description: "Aprende a desplegar sitios web desde principiante hasta nivel empresarial"
+baseurl: "/webdeveloperprod"
+url: "https://mauricio-acuna.github.io"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Navigation
+nav_links:
+  - title: "Inicio"
+    url: "/"
+  - title: "Paso 1: Fundamentos"
+    url: "/paso1.html"
+  - title: "Paso 2: GitHub Pages"
+    url: "/paso2.html"
+  - title: "Paso 3: Multi-plataforma"
+    url: "/paso3.html"
+  - title: "Paso 4: Seguridad"
+    url: "/paso4.html"
+  - title: "Paso 5: Full-Stack"
+    url: "/paso5.html"
+  - title: "Premium"
+    url: "/premium.html"
+  - title: "Glosario"
+    url: "/glosario.html"
+
+# SEO
+author: "Mauricio Acuña"
+social:
+  name: "Web Developer Pro"
+  links:
+    - "https://github.com/mauricio-acuna"
+
+# Exclude files
+exclude:
+  - setup_git_simple.ps1
+  - README.md
+  - .gitignore
